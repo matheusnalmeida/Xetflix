@@ -9,12 +9,43 @@ private String nome;
         private String categoria;
         private String subcategoria;
         private String descricao;
-        private float avaliacao;
+        private int avaliacao;
         private String diretor;
         private String atores;
+
+    public Conteudo() {
+    }
+
+    public Conteudo(String nome, String categoria, String subcategoria, String descricao, int avaliacao, String diretor, String atores) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.subcategoria = subcategoria;
+        this.descricao = descricao;
+        this.avaliacao = avaliacao;
+        this.diretor = diretor;
+        this.atores = atores;
+    }
+    
     public void atualizarAvaliacao(){
         
     }  
+   public boolean equals(Object obj) 
+    { 
+          
+    
+    if(this == obj) {
+            return true; 
+    }
+       
+        if(obj == null || obj.getClass()!= this.getClass()) {
+            return false; 
+        }
+       
+        Conteudo Conteudo = (Conteudo) obj; 
+        
+        return (this.nome.equals(Conteudo.getNome())); 
+    }
+      
     public String getNome() {
         return nome;
     }
@@ -51,7 +82,7 @@ private String nome;
         return avaliacao;
     }
 
-    public void setAvaliacao(float avaliacao) {
+    public void setAvaliacao(int avaliacao) {
         this.avaliacao = avaliacao;
     }
 

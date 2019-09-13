@@ -19,9 +19,19 @@ public class Cliente {
         this.email = email;
         this.senha = senha;
     }
-public void avaliarTitul(){
     
-}
+    public void avaliarTitulo(Conteudo C, int avaliacao){
+    if(C instanceof Filme){
+        Netflix N = new Netflix();
+        int indice = N.getFilmes().indexOf(C);
+        N.getFilmes().get(indice).setAvaliacao(avaliacao);
+    }else {
+        Netflix N = new Netflix();
+        int indice = N.getSeries().indexOf(C);
+        N.getSeries().get(indice).setAvaliacao(avaliacao);
+    }
+    }
+    
     public String getNome() {
         return nome;
     }
