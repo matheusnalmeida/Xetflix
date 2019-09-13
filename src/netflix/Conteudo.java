@@ -5,13 +5,13 @@
 package netflix;
 
 public class Conteudo {
-private String nome;
-        private String categoria;
-        private String subcategoria;
-        private String descricao;
-        private int avaliacao;
-        private String diretor;
-        private String atores;
+    private String nome;
+    private String categoria;
+    private String subcategoria;
+    private String descricao;
+    private int avaliacao;
+    private String diretor;
+    private String atores;
 
     public Conteudo() {
     }

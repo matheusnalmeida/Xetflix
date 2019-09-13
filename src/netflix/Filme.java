@@ -8,11 +8,6 @@ public class Filme extends Conteudo{
         private String duracao;
 
    
-    
-        
-        
-        
-        
     public Filme(String duracao) {
         this.duracao = duracao;
     }
