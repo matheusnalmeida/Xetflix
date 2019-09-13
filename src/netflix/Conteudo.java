@@ -4,6 +4,8 @@
  */
 package netflix;
 
+import java.util.ArrayList;
+
 public class Conteudo {
     private String nome;
     private String categoria;
@@ -11,31 +13,30 @@ public class Conteudo {
     private String descricao;
     private int avaliacao;
     private String diretor;
-    private String atores;
-
+    private ArrayList<String> listaDeAtores;
+    
     public Conteudo() {
+        
     }
 
-    public Conteudo(String nome, String categoria, String subcategoria, String descricao, int avaliacao, String diretor, String atores) {
+    public Conteudo(String nome, String categoria, String subcategoria, String descricao, int avaliacao, String diretor) {
         this.nome = nome;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
         this.descricao = descricao;
         this.avaliacao = avaliacao;
         this.diretor = diretor;
-        this.atores = atores;
+        this.listaDeAtores = new ArrayList<>();
     }
     
     public void atualizarAvaliacao(){
         
     }  
-   public boolean equals(Object obj) 
-    { 
-          
     
-    if(this == obj) {
-            return true; 
-    }
+    public boolean equals(Object obj){ 
+        if(this == obj) {
+                return true; 
+        }
        
         if(obj == null || obj.getClass()!= this.getClass()) {
             return false; 
@@ -94,12 +95,5 @@ public class Conteudo {
         this.diretor = diretor;
     }
 
-    public String getAtores() {
-        return atores;
-    }
-
-    public void setAtores(String atores) {
-        this.atores = atores;
-    }
         
 }
