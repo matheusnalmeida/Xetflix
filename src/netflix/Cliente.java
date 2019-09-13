@@ -12,6 +12,11 @@ public class Cliente {
 
     public Cliente() {
     }
+
+    public Cliente(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
     
     public Cliente(String nome, String cpf, String email, String senha) {
         this.nome = nome;
@@ -64,4 +69,28 @@ public class Cliente {
         this.senha = senha;
     }
            
+    
+    public boolean equals(Object obj) 
+    { 
+          
+    
+    if(this == obj) {
+            return true; 
+    }
+       
+        if(obj == null || obj.getClass()!= this.getClass()) {
+            return false; 
+        }
+       
+        Cliente Cliente = (Cliente) obj; 
+        
+        return (this.email.equals(Cliente.email) && this.senha.equals(Cliente.senha)); 
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nome=" + nome + ", cpf=" + cpf + ", email=" + email + ", senha=" + senha + '}';
+    }
+    
+    
 }

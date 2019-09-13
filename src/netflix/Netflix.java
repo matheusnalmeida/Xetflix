@@ -81,6 +81,13 @@ public class Netflix {
     public void setClientes(ArrayList<Cliente> Clientes) {
         this.Clientes = Clientes;
     }
+
+    @Override
+    public String toString() {
+        return "Netflix{" + "Clientes=" + Clientes + '}';
+    }
+
+   
     
     
 }
