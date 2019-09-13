@@ -6,6 +6,7 @@
 package netflix;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,6 +19,18 @@ public class Netflix {
     public void cadastrarCliente(String nome,String cpf,String email, String senha){
         Cliente Cliente = new Cliente(nome, cpf, email, senha);
         Clientes.add(Cliente);
+    }
+    public void consultarConteudo(Conteudo C){
+        if(C instanceof Filme){
+            for (int i = 0; i < Filmes.size(); i++) {
+                JOptionPane.showMessageDialog(null, "Filmes cadastrados--" + "\n" + Filmes);
+            }
+        
+    }else{
+            for (int i = 0; i < Series.size(); i++) {
+                JOptionPane.showMessageDialog(null, "Series cadastrados--" + "\n" + Series);
+            }
+        }
     }
     public void cadastrarConteudo(Conteudo C){
         if(C instanceof Filme){
