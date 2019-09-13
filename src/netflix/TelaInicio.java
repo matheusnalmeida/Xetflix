@@ -6,8 +6,6 @@
 package netflix;
 
 import javax.swing.JOptionPane;
-import netflix.Cliente;
-import netflix.Netflix;
 
 /**
  *
@@ -15,11 +13,15 @@ import netflix.Netflix;
  */
 public class TelaInicio extends javax.swing.JFrame {
 
-CadastroUsuario cu = new CadastroUsuario();
+    private Netflix netflixBancoDeDados;
+    private CadastroUsuario cadastroUsuarioTela;
+
     /**
      * Creates new form TelaInicio
      */
     public TelaInicio() {
+        this.netflixBancoDeDados = new Netflix();
+        this.cadastroUsuarioTela = new CadastroUsuario(this.netflixBancoDeDados, this);
         initComponents();
     }
 
@@ -46,7 +48,7 @@ CadastroUsuario cu = new CadastroUsuario();
         jPanel1.setBackground(new java.awt.Color(255, 0, 0));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jLabel1.setText("Usuario = ");
+        jLabel1.setText("Email = ");
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel2.setText("Senha   =");
@@ -131,26 +133,23 @@ CadastroUsuario cu = new CadastroUsuario();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        if(txtUsuario.getText().equals("adm") && txtSenha.getText().equals("adm")){
-             JOptionPane.showMessageDialog(null, "Bem vindo , ADM");
-             System.out.println(cu.getN().getClientes());
-        }else if(cu.getN().getClientes().contains(new Cliente(txtUsuario.getText(), txtSenha.getText())) ){
-             for (int i = 0; i < cu.getN().getClientes().size(); i++) {
-                Cliente C = cu.getN().getClientes().get(i);
-                if((C.getEmail().equals(txtUsuario.getText()) && C.getSenha().equals(txtSenha.getText()))){
-                   JOptionPane.showMessageDialog(null, "Logado com sucesso");
-                }
+        String usuario = this.txtUsuario.getText();
+        String senha = new String(this.txtSenha.getPassword());
+        if (usuario.equals("adm") && senha.equals("adm")) {
+            JOptionPane.showMessageDialog(null, "Bem vindo , ADM");
+        } else {
+            Cliente clienteAtual = this.netflixBancoDeDados.verificaLoginCliente(usuario, senha);
+            if (clienteAtual != null) {
+                JOptionPane.showMessageDialog(null, "Cliente Logado Com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "senha incorreta");
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "senha incorreta");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        cu.setVisible(true);
+        this.dispose();
+        cadastroUsuarioTela.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

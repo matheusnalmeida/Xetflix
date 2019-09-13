@@ -5,25 +5,28 @@
  */
 package netflix;
 
-import java.util.ArrayList;
-import netflix.Cliente;
-import netflix.Netflix;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Aldo
  */
-public class CadastroUsuario extends javax.swing.JFrame {
+public class CadastroUsuario extends JFrame {
 
-    /**
-     * Creates new form CadastroUsuario
-     */
+    private Netflix netflixBancoDeDadosAtual;
+    private JFrame telaanterior;
+
     public CadastroUsuario() {
         initComponents();
-        
     }
 
-Netflix N = new Netflix();
+    public CadastroUsuario(Netflix netflixBancoDeDados, JFrame telaAnterior) {
+        initComponents();
+        this.netflixBancoDeDadosAtual = netflixBancoDeDados;
+        this.telaanterior = telaAnterior;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,10 +44,15 @@ Netflix N = new Netflix();
         txtCpf = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         txtSenha = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botaoDeCadastro = new javax.swing.JButton();
+        botaoVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel1.setText("Nome:");
@@ -58,17 +66,17 @@ Netflix N = new Netflix();
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel4.setText("Cpf:");
 
-        jButton1.setText("Cadastro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botaoDeCadastro.setText("Cadastro");
+        botaoDeCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoDeCadastroActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Voltar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botaoVoltar.setText("Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoVoltarActionPerformed(evt);
             }
         });
 
@@ -80,15 +88,13 @@ Netflix N = new Netflix();
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(botaoVoltar)
                         .addGap(250, 250, 250)
-                        .addComponent(jButton1))
+                        .addComponent(botaoDeCadastro))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addComponent(jLabel1)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                                     .addGap(6, 6, 6)))
@@ -102,7 +108,7 @@ Netflix N = new Netflix();
                                 .addComponent(jLabel2))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                                 .addComponent(txtSenha)))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -127,32 +133,35 @@ Netflix N = new Netflix();
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(botaoDeCadastro)
+                    .addComponent(botaoVoltar))
                 .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        Cliente C = new Cliente();
-       
-        C.setNome(txtNome.getText());
-        C.setCpf(txtCpf.getText());
-        C.setEmail(txtEmail.getText());
-        C.setSenha(txtSenha.getText());
-        N.cadastrarCliente(C.getNome(), C.getCpf(), C.getEmail(), C.getSenha());
-       
-     
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botaoDeCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDeCadastroActionPerformed
+        String nome = (txtNome.getText());
+        String cpf = (txtCpf.getText());
+        String email = (txtEmail.getText());
+        String senha = (txtSenha.getText());
+        Cliente novoCliente = new Cliente(nome, cpf, email, senha);
+        if (this.netflixBancoDeDadosAtual.cadastrarCliente(novoCliente)) {
+            JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso");
+        }else{
+            JOptionPane.showMessageDialog(null, "Cliente Nao Cadastrado");
+        }
+    }//GEN-LAST:event_botaoDeCadastroActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        this.dispose();
+        this.telaanterior.setVisible(true);
+    }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        this.telaanterior.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -189,17 +198,10 @@ Netflix N = new Netflix();
         });
     }
 
-    public Netflix getN() {
-        return N;
-    }
-
-    public void setN(Netflix N) {
-        this.N = N;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton botaoDeCadastro;
+    private javax.swing.JButton botaoVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

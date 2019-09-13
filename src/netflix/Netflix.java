@@ -13,49 +13,67 @@ import javax.swing.JOptionPane;
  * @author Aldo
  */
 public class Netflix {
+
     private ArrayList<Filme> Filmes = new ArrayList<>();
     private ArrayList<Serie> Series = new ArrayList<>();
     private ArrayList<Cliente> Clientes = new ArrayList<>();
-    public void cadastrarCliente(String nome,String cpf,String email, String senha){
-        Cliente Cliente = new Cliente(nome, cpf, email, senha);
-        Clientes.add(Cliente);
+
+    public boolean cadastrarCliente(Cliente novoCliente) {
+        if (!Clientes.contains(novoCliente)) {
+            Clientes.add(novoCliente);
+            return true;
+        }
+        return false;
     }
-    public void consultarConteudo(Conteudo C){
-        if(C instanceof Filme){
+
+    public Cliente verificaLoginCliente(String emailInformado, String senhaInformada) {
+        for (Cliente clienteAtual : this.Clientes) {
+            if ((clienteAtual.getEmail().equals(emailInformado)) && (clienteAtual.getSenha().equals(senhaInformada))) {
+                return clienteAtual;
+            }
+        }
+        return null;
+    }
+
+    public void consultarConteudo(Conteudo C) {
+        if (C instanceof Filme) {
             for (int i = 0; i < Filmes.size(); i++) {
                 JOptionPane.showMessageDialog(null, "Filmes cadastrados--" + "\n" + Filmes);
             }
-        
-    }else{
+
+        } else {
             for (int i = 0; i < Series.size(); i++) {
                 JOptionPane.showMessageDialog(null, "Series cadastrados--" + "\n" + Series);
             }
         }
     }
-    public void cadastrarConteudo(Conteudo C){
-        if(C instanceof Filme){
+
+    public void cadastrarConteudo(Conteudo C) {
+        if (C instanceof Filme) {
             this.Filmes.add((Filme) C);
-        }else{
+        } else {
             this.Series.add((Serie) C);
         }
     }
-    public void removerConteudo(Conteudo C){
-        if(C instanceof Filme){
-            for (int i = 0; i < Filmes.size() ; i++) {
-                if(C.equals(Filmes.get(i))){
+
+    public void removerConteudo(Conteudo C) {
+        if (C instanceof Filme) {
+            for (int i = 0; i < Filmes.size(); i++) {
+                if (C.equals(Filmes.get(i))) {
                     this.Filmes.remove(C);
                 }
             }
-        }else{
-            for (int i = 0; i < Series.size() ; i++) {
-                if(C.equals(Series.get(i))){
+        } else {
+            for (int i = 0; i < Series.size(); i++) {
+                if (C.equals(Series.get(i))) {
                     this.Series.remove(C);
                 }
             }
         }
     }
-    public void alterarConteudo(){
-        
+
+    public void alterarConteudo() {
+
     }
 
     public ArrayList<Filme> getFilmes() {
@@ -87,7 +105,4 @@ public class Netflix {
         return "Netflix{" + "Clientes=" + Clientes + '}';
     }
 
-   
-    
-    
 }
