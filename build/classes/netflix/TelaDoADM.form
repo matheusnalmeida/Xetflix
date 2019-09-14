@@ -142,6 +142,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Atualizar Conte&#xfa;do"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarConteudoBotaoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="verUsuariosCadastradosBotao">
           <Properties>
@@ -155,6 +158,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Excluir Conte&#xfa;do"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="excluirConteudoBotaoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>

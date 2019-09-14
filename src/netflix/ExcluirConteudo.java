@@ -5,12 +5,17 @@
  */
 package netflix;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author EriikD
  */
 public class ExcluirConteudo extends javax.swing.JFrame {
 
+    private Netflix netflixBancoDeDados;
+    private JFrame telaAdministrador;
+    
     /**
      * Creates new form ExcluirConteudo
      */
@@ -18,6 +23,12 @@ public class ExcluirConteudo extends javax.swing.JFrame {
         initComponents();
     }
 
+    public ExcluirConteudo(Netflix netflixBancoDeDados, JFrame telaAdministrador) {
+        this.netflixBancoDeDados = netflixBancoDeDados;
+        this.telaAdministrador = telaAdministrador;
+        initComponents();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +43,7 @@ public class ExcluirConteudo extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        voltarTelaADMBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +55,13 @@ public class ExcluirConteudo extends javax.swing.JFrame {
         jButton1.setText("Pesquisar");
 
         jButton2.setText("Excluir");
+
+        voltarTelaADMBotao.setText("Voltar");
+        voltarTelaADMBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaADMBotaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,9 +80,13 @@ public class ExcluirConteudo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
+                        .addGap(214, 214, 214)
                         .addComponent(jButton2)))
                 .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(voltarTelaADMBotao)
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,13 +98,20 @@ public class ExcluirConteudo extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addComponent(jButton2)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(voltarTelaADMBotao)
+                .addGap(14, 14, 14))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarTelaADMBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaADMBotaoActionPerformed
+        this.setVisible(false);
+        this.telaAdministrador.setVisible(true);
+    }//GEN-LAST:event_voltarTelaADMBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,5 +154,6 @@ public class ExcluirConteudo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton voltarTelaADMBotao;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,8 @@ public class TelaDoADM extends javax.swing.JFrame {
     private CadastrarConteudo cadastrarConteudo;
     private VerUsuariosCadastrados verUsuariosCadastrados;
     private VerConteudosCadastrados verConteudosCadastrados;
+    private ExcluirConteudo excluirConteudo;
+    private AtualizarConteudo atualizarConteudo;
     
     /**
      * Creates new form TelaDoADM
@@ -34,6 +36,8 @@ public class TelaDoADM extends javax.swing.JFrame {
         this.cadastrarConteudo = new CadastrarConteudo(this, this.netflixBancoDeDadosAtual);
         this.verUsuariosCadastrados = new VerUsuariosCadastrados(this.netflixBancoDeDadosAtual, this);
         this.verConteudosCadastrados = new VerConteudosCadastrados(this.netflixBancoDeDadosAtual, this);
+        this.excluirConteudo = new ExcluirConteudo(this.netflixBancoDeDadosAtual, this);
+        this.atualizarConteudo = new AtualizarConteudo(this.netflixBancoDeDadosAtual, this);
     }
     
     /**
@@ -88,6 +92,11 @@ public class TelaDoADM extends javax.swing.JFrame {
         });
 
         atualizarConteudoBotao.setText("Atualizar Conteúdo");
+        atualizarConteudoBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarConteudoBotaoActionPerformed(evt);
+            }
+        });
 
         verUsuariosCadastradosBotao.setText("Ver usuários cadastrados");
         verUsuariosCadastradosBotao.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +106,11 @@ public class TelaDoADM extends javax.swing.JFrame {
         });
 
         excluirConteudoBotao.setText("Excluir Conteúdo");
+        excluirConteudoBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluirConteudoBotaoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
@@ -179,6 +193,16 @@ public class TelaDoADM extends javax.swing.JFrame {
         this.setVisible(false);
         this.verConteudosCadastrados.setVisible(true);
     }//GEN-LAST:event_verConteudosCadastradosBotaoActionPerformed
+
+    private void excluirConteudoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirConteudoBotaoActionPerformed
+        this.setVisible(false);
+        this.excluirConteudo.setVisible(true);
+    }//GEN-LAST:event_excluirConteudoBotaoActionPerformed
+
+    private void atualizarConteudoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarConteudoBotaoActionPerformed
+        this.setVisible(false);
+        this.atualizarConteudo.setVisible(true);
+    }//GEN-LAST:event_atualizarConteudoBotaoActionPerformed
 
     /**
      * @param args the command line arguments
