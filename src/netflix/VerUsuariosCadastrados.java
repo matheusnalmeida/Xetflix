@@ -5,7 +5,10 @@
  */
 package netflix;
 
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +32,19 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void atualizarTabelaUsuariosCadastrados(){
+        DefaultTableModel model = (DefaultTableModel) this.tabelaDeUsuarios.getModel();
+        model.setRowCount(0);
+        ArrayList<Cliente> usuariosCadastrados = this.netflixBancoDeDados.getClientes();
+        for (int i = 0; i < usuariosCadastrados.size(); i++) {
+            String nome = usuariosCadastrados.get(i).getNome();
+            String email = usuariosCadastrados.get(i).getEmail();
+            String cpf = usuariosCadastrados.get(i).getCpf();
+            String senha = usuariosCadastrados.get(i).getSenha();
+            model.addRow(new String[]{nome,email,cpf,senha});
+        }
+    }
+    
     
 
     /**
@@ -42,7 +58,7 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaDeUsuarios = new javax.swing.JTable();
         voltarTelaAdministrador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +67,7 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("USUÁRIOS CADASTRADOS");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaDeUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -67,12 +83,12 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        jScrollPane2.setViewportView(tabelaDeUsuarios);
+        if (tabelaDeUsuarios.getColumnModel().getColumnCount() > 0) {
+            tabelaDeUsuarios.getColumnModel().getColumn(0).setResizable(false);
+            tabelaDeUsuarios.getColumnModel().getColumn(1).setResizable(false);
+            tabelaDeUsuarios.getColumnModel().getColumn(2).setResizable(false);
+            tabelaDeUsuarios.getColumnModel().getColumn(3).setResizable(false);
         }
 
         voltarTelaAdministrador.setText("Voltar");
@@ -159,7 +175,7 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaDeUsuarios;
     private javax.swing.JButton voltarTelaAdministrador;
     // End of variables declaration//GEN-END:variables
 }

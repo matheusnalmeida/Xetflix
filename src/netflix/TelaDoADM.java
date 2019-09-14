@@ -6,7 +6,6 @@
 package netflix;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -186,6 +185,7 @@ public class TelaDoADM extends javax.swing.JFrame {
 
     private void verUsuariosCadastradosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosCadastradosBotaoActionPerformed
         this.setVisible(false);
+        this.verUsuariosCadastrados.atualizarTabelaUsuariosCadastrados();
         this.verUsuariosCadastrados.setVisible(true);
     }//GEN-LAST:event_verUsuariosCadastradosBotaoActionPerformed
 
