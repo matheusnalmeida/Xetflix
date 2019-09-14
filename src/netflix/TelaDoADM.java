@@ -6,6 +6,7 @@
 package netflix;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +16,7 @@ public class TelaDoADM extends javax.swing.JFrame {
 
     private Netflix netflixBancoDeDadosAtual;
     private JFrame telaanterior;
+    private CadastrarConteudo cadastrarConteudo;
     
     /**
      * Creates new form TelaDoADM
@@ -27,6 +29,7 @@ public class TelaDoADM extends javax.swing.JFrame {
         initComponents();
         this.netflixBancoDeDadosAtual = netflixBancoDeDadosAtual;
         this.telaanterior = telaanterior;
+        this.cadastrarConteudo = new CadastrarConteudo(this, this.netflixBancoDeDadosAtual);
     }
     
     
@@ -40,30 +43,25 @@ public class TelaDoADM extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
+        sairDaTelaBotao = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        cadastrarConteudoBotao = new javax.swing.JButton();
+        verConteudosCadastradosBotao = new javax.swing.JButton();
+        atualizarConteudoBotao = new javax.swing.JButton();
+        verUsuariosCadastradosBotao = new javax.swing.JButton();
+        excluirConteudoBotao = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jButton8.setText("Sair");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        sairDaTelaBotao.setText("Sair");
+        sairDaTelaBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                sairDaTelaBotaoActionPerformed(evt);
             }
         });
 
@@ -72,15 +70,20 @@ public class TelaDoADM extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Xetflix System");
 
-        jButton1.setText("Cadastrar Conteúdo");
+        cadastrarConteudoBotao.setText("Cadastrar Conteúdo");
+        cadastrarConteudoBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cadastrarConteudoBotaoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Ver conteúdos cadastrados");
+        verConteudosCadastradosBotao.setText("Ver conteúdos cadastrados");
 
-        jButton5.setText("Atualizar Conteúdo");
+        atualizarConteudoBotao.setText("Atualizar Conteúdo");
 
-        jButton6.setText("Ver usuários cadastrados");
+        verUsuariosCadastradosBotao.setText("Ver usuários cadastrados");
 
-        jButton7.setText("Excluir Conteúdo");
+        excluirConteudoBotao.setText("Excluir Conteúdo");
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo.png"))); // NOI18N
 
@@ -92,17 +95,17 @@ public class TelaDoADM extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(136, 136, 136)
-                        .addComponent(jButton8))
+                        .addComponent(sairDaTelaBotao))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
+                            .addComponent(verConteudosCadastradosBotao)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel2)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cadastrarConteudoBotao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(excluirConteudoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(atualizarConteudoBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(verUsuariosCadastradosBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel1)))
@@ -116,17 +119,17 @@ public class TelaDoADM extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(cadastrarConteudoBotao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
+                .addComponent(verUsuariosCadastradosBotao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(verConteudosCadastradosBotao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
+                .addComponent(excluirConteudoBotao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(atualizarConteudoBotao)
                 .addGap(24, 24, 24)
-                .addComponent(jButton8)
+                .addComponent(sairDaTelaBotao)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -144,14 +147,15 @@ public class TelaDoADM extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.dispose();
+    private void sairDaTelaBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairDaTelaBotaoActionPerformed
+        this.setVisible(false);
         this.telaanterior.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_sairDaTelaBotaoActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        this.telaanterior.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
+    private void cadastrarConteudoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarConteudoBotaoActionPerformed
+        this.setVisible(false);
+        this.cadastrarConteudo.setVisible(true);
+    }//GEN-LAST:event_cadastrarConteudoBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,14 +193,14 @@ public class TelaDoADM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton atualizarConteudoBotao;
+    private javax.swing.JButton cadastrarConteudoBotao;
+    private javax.swing.JButton excluirConteudoBotao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton sairDaTelaBotao;
+    private javax.swing.JButton verConteudosCadastradosBotao;
+    private javax.swing.JButton verUsuariosCadastradosBotao;
     // End of variables declaration//GEN-END:variables
 }

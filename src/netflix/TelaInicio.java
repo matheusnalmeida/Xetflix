@@ -141,7 +141,7 @@ public class TelaInicio extends javax.swing.JFrame {
         String senha = new String(this.txtSenha.getPassword());
         if (usuario.equals("adm") && senha.equals("adm")) {
             JOptionPane.showMessageDialog(null, "Bem vindo, administrador!");
-            this.dispose();
+            this.setVisible(false);
             telaDoAdministrador.setVisible(true);
         } else {
             Cliente clienteAtual = this.netflixBancoDeDados.verificaLoginCliente(usuario, senha);
