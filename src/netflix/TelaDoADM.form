@@ -134,6 +134,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver conte&#xfa;dos cadastrados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verConteudosCadastradosBotaoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="atualizarConteudoBotao">
           <Properties>
@@ -144,6 +147,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver usu&#xe1;rios cadastrados"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verUsuariosCadastradosBotaoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="excluirConteudoBotao">
           <Properties>

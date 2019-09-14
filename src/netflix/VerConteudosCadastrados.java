@@ -5,16 +5,27 @@
  */
 package netflix;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author EriikD
  */
 public class VerConteudosCadastrados extends javax.swing.JFrame {
 
+    private Netflix netflixBancoDedados;
+    private JFrame telaAdministrador;
+    
     /**
      * Creates new form VerConteudosCadastrados
      */
     public VerConteudosCadastrados() {
+        initComponents();
+    }
+
+    public VerConteudosCadastrados(Netflix netflixBancoDedados, JFrame telaAdministrador) {
+        this.netflixBancoDedados = netflixBancoDedados;
+        this.telaAdministrador = telaAdministrador;
         initComponents();
     }
 
@@ -30,6 +41,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        voltarTelaADMBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,6 +71,13 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        voltarTelaADMBotao.setText("Voltar");
+        voltarTelaADMBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarTelaADMBotaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,19 +90,30 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(voltarTelaADMBotao)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(voltarTelaADMBotao)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void voltarTelaADMBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarTelaADMBotaoActionPerformed
+        this.setVisible(false);
+        this.telaAdministrador.setVisible(true);
+    }//GEN-LAST:event_voltarTelaADMBotaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,5 +154,6 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton voltarTelaADMBotao;
     // End of variables declaration//GEN-END:variables
 }

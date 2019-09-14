@@ -17,6 +17,8 @@ public class TelaDoADM extends javax.swing.JFrame {
     private Netflix netflixBancoDeDadosAtual;
     private JFrame telaanterior;
     private CadastrarConteudo cadastrarConteudo;
+    private VerUsuariosCadastrados verUsuariosCadastrados;
+    private VerConteudosCadastrados verConteudosCadastrados;
     
     /**
      * Creates new form TelaDoADM
@@ -30,8 +32,9 @@ public class TelaDoADM extends javax.swing.JFrame {
         this.netflixBancoDeDadosAtual = netflixBancoDeDadosAtual;
         this.telaanterior = telaanterior;
         this.cadastrarConteudo = new CadastrarConteudo(this, this.netflixBancoDeDadosAtual);
+        this.verUsuariosCadastrados = new VerUsuariosCadastrados(this.netflixBancoDeDadosAtual, this);
+        this.verConteudosCadastrados = new VerConteudosCadastrados(this.netflixBancoDeDadosAtual, this);
     }
-    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -78,10 +81,20 @@ public class TelaDoADM extends javax.swing.JFrame {
         });
 
         verConteudosCadastradosBotao.setText("Ver conteúdos cadastrados");
+        verConteudosCadastradosBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verConteudosCadastradosBotaoActionPerformed(evt);
+            }
+        });
 
         atualizarConteudoBotao.setText("Atualizar Conteúdo");
 
         verUsuariosCadastradosBotao.setText("Ver usuários cadastrados");
+        verUsuariosCadastradosBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verUsuariosCadastradosBotaoActionPerformed(evt);
+            }
+        });
 
         excluirConteudoBotao.setText("Excluir Conteúdo");
 
@@ -156,6 +169,16 @@ public class TelaDoADM extends javax.swing.JFrame {
         this.setVisible(false);
         this.cadastrarConteudo.setVisible(true);
     }//GEN-LAST:event_cadastrarConteudoBotaoActionPerformed
+
+    private void verUsuariosCadastradosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verUsuariosCadastradosBotaoActionPerformed
+        this.setVisible(false);
+        this.verUsuariosCadastrados.setVisible(true);
+    }//GEN-LAST:event_verUsuariosCadastradosBotaoActionPerformed
+
+    private void verConteudosCadastradosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verConteudosCadastradosBotaoActionPerformed
+        this.setVisible(false);
+        this.verConteudosCadastrados.setVisible(true);
+    }//GEN-LAST:event_verConteudosCadastradosBotaoActionPerformed
 
     /**
      * @param args the command line arguments

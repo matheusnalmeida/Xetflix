@@ -177,6 +177,8 @@ public class CadastroUsuario extends JFrame {
         Cliente novoCliente = new Cliente(nome, cpf, email, senha);
         if (this.netflixBancoDeDadosAtual.cadastrarCliente(novoCliente)) {
             JOptionPane.showMessageDialog(null, "Cliente Cadastrado com sucesso");
+            this.setVisible(false);
+            this.telaanterior.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "Cliente Nao Cadastrado");
         }
