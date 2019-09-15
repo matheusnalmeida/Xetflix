@@ -14,6 +14,10 @@ public class Conteudo {
     private String diretor;
     private String[] listaDeAtores;
 
+    public Conteudo(String nome){
+        this.nome = nome;
+    }
+    
     public Conteudo(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores) {
         this.nome = nome;
         this.categoria = categoria;

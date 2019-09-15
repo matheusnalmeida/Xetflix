@@ -8,6 +8,10 @@ public class Filme extends Conteudo {
 
     private int duracao;
     
+    public Filme(String nome){
+        super(nome);
+    }
+    
     public Filme(String nome, String categoria, String subcategoria, String descricao, String diretor,String[] listaDeAtores, int duracao) {
         super(nome, categoria, subcategoria, descricao, diretor,listaDeAtores);
         this.duracao = duracao;

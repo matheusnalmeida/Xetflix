@@ -6,7 +6,6 @@
 package Model;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +51,24 @@ public class Netflix {
         return false;
     }
     
+    public Filme buscarFilme(String nome){
+        for (Filme filmeAtual : this.Filmes) {
+            if (filmeAtual.equals(new Filme(nome))){
+                return filmeAtual;
+            }
+        }
+        return null;
+    }
+    
+    public Serie buscarSerie(String nome){
+        for (Serie serieAtual : this.Series) {
+            if (serieAtual.equals(new Serie(nome))){
+                return serieAtual;
+            }
+        }
+        return null;
+    }
+    
     public Cliente verificaLoginCliente(String emailInformado, String senhaInformada) {
         for (Cliente clienteAtual : this.Clientes) {
             if ((clienteAtual.getEmail().equals(emailInformado)) && (clienteAtual.getSenha().equals(senhaInformada))) {
@@ -66,22 +83,6 @@ public class Netflix {
             this.Filmes.add((Filme) C);
         } else {
             this.Series.add((Serie) C);
-        }
-    }
-
-    public void removerConteudo(Conteudo C) {
-        if (C instanceof Filme) {
-            for (int i = 0; i < Filmes.size(); i++) {
-                if (C.equals(Filmes.get(i))) {
-                    this.Filmes.remove(C);
-                }
-            }
-        } else {
-            for (int i = 0; i < Series.size(); i++) {
-                if (C.equals(Series.get(i))) {
-                    this.Series.remove(C);
-                }
-            }
         }
     }
 

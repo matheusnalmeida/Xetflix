@@ -8,6 +8,10 @@ public class Serie extends Conteudo {
 
     private int temporadas;
 
+    public Serie(String nome){
+        super(nome);
+    }
+    
     public Serie(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores, int temporadas) {
         super(nome, categoria, subcategoria, descricao, diretor, listaDeAtores);
         this.temporadas = temporadas;
