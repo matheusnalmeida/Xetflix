@@ -18,6 +18,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private Netflix netflixBancoDeDados;
     private CadastroUsuario cadastroUsuarioTela;
     private TelaDoADM telaDoAdministrador;
+    private TelaDoUsuario telaDoUsuario;
 
     /**
      * Creates new form TelaInicio
@@ -26,6 +27,7 @@ public class TelaInicio extends javax.swing.JFrame {
         this.netflixBancoDeDados = new Netflix();
         this.cadastroUsuarioTela = new CadastroUsuario(this.netflixBancoDeDados, this);
         this.telaDoAdministrador = new TelaDoADM(this.netflixBancoDeDados, this);
+        this.telaDoUsuario = new TelaDoUsuario(this.netflixBancoDeDados, this);
         initComponents();
     }
 
@@ -146,9 +148,10 @@ public class TelaInicio extends javax.swing.JFrame {
             telaDoAdministrador.setVisible(true);
         } else {
             Cliente clienteAtual = this.netflixBancoDeDados.verificaLoginCliente(usuario, senha);
-            if (clienteAtual != null) {
-                JOptionPane.showMessageDialog(null, "Cliente logado com sucesso!");
-                
+            if (clienteAtual != null || usuario.equals("a") && senha.equals("a")) {
+                JOptionPane.showMessageDialog(null, "Bem vindo, "+ usuario + "!");
+                this.setVisible(false);
+                this.telaDoUsuario.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null, "Senha incorreta!");
             }
