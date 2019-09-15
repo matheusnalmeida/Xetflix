@@ -195,6 +195,7 @@ public class TelaDoADM extends javax.swing.JFrame {
 
     private void verConteudosCadastradosBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verConteudosCadastradosBotaoActionPerformed
         this.setVisible(false);
+        this.verConteudosCadastrados.atualizarTabelaUsuariosCadastrados();
         this.verConteudosCadastrados.setVisible(true);
     }//GEN-LAST:event_verConteudosCadastradosBotaoActionPerformed
 

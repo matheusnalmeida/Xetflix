@@ -5,8 +5,13 @@
  */
 package View;
 
+import Model.Cliente;
+import Model.Filme;
 import javax.swing.JFrame;
 import Model.Netflix;
+import Model.Serie;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +34,21 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
         this.telaAdministrador = telaAdministrador;
         initComponents();
     }
+    
+    public void atualizarTabelaUsuariosCadastrados(){
+        DefaultTableModel model = (DefaultTableModel) this.tabelaDeConteudos.getModel();
+        model.setRowCount(0);
+        ArrayList<Filme> filmesCadastrados = this.netflixBancoDedados.getFilmes();
+        ArrayList<Serie> seriesCadastradas = this.netflixBancoDedados.getSeries();
+        for (int i = 0; i < filmesCadastrados.size(); i++) {
+            Filme filmeAtual = filmesCadastrados.get(i);
+            model.addRow(new String[]{filmeAtual.getNome(),"X",""});
+        }
+        for (int i = 0; i < seriesCadastradas.size(); i++) {
+            Serie serieAtual = seriesCadastradas.get(i);
+            model.addRow(new String[]{serieAtual.getNome(),"","X"});
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +61,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaDeConteudos = new javax.swing.JTable();
         voltarTelaADMBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -49,7 +69,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("CONTEÚDOS CADASTRADOS");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaDeConteudos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -65,11 +85,11 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        jScrollPane1.setViewportView(tabelaDeConteudos);
+        if (tabelaDeConteudos.getColumnModel().getColumnCount() > 0) {
+            tabelaDeConteudos.getColumnModel().getColumn(0).setResizable(false);
+            tabelaDeConteudos.getColumnModel().getColumn(1).setResizable(false);
+            tabelaDeConteudos.getColumnModel().getColumn(2).setResizable(false);
         }
 
         voltarTelaADMBotao.setText("Voltar");
@@ -154,7 +174,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaDeConteudos;
     private javax.swing.JButton voltarTelaADMBotao;
     // End of variables declaration//GEN-END:variables
 }
