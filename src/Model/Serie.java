@@ -21,6 +21,10 @@ public class Serie extends Conteudo {
         return temporadas;
     }
 
+    public void setTemporadas(int temporadas) {
+        this.temporadas = temporadas;
+    }
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

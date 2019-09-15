@@ -93,6 +93,11 @@ public class Conteudo {
         this.diretor = diretor;
     }
 
+    public String[] getListaDeAtores() {
+        return listaDeAtores;
+    }
+
+    
     @Override
     public String toString() {
         return this.getNome();

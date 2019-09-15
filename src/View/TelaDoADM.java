@@ -207,6 +207,7 @@ public class TelaDoADM extends javax.swing.JFrame {
 
     private void atualizarConteudoBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarConteudoBotaoActionPerformed
         this.setVisible(false);
+        this.atualizarConteudo.desabilitarCampos();
         this.atualizarConteudo.setVisible(true);
     }//GEN-LAST:event_atualizarConteudoBotaoActionPerformed
 
