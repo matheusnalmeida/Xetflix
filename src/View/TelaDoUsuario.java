@@ -110,7 +110,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jButton1)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE))
                                 .addGap(185, 185, 185)))))
                 .addContainerGap())
         );
@@ -155,6 +155,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     private void telaDeConfigUserBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telaDeConfigUserBotaoActionPerformed
         this.setVisible(false);
+        this.telaDeConfiguracaoDoUsuario.desabilitarCamposConfig();
         this.telaDeConfiguracaoDoUsuario.setVisible(true);
     }//GEN-LAST:event_telaDeConfigUserBotaoActionPerformed
 

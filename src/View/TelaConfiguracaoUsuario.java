@@ -5,8 +5,10 @@
  */
 package View;
 
+import Model.Cliente;
 import Model.Netflix;
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,6 +18,7 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
 
     private Netflix netflixBancoDeDadosAtual;
     private JFrame telaanterior;
+    private Cliente clientePesquisado;
     
     /**
      * Creates new form TelaConfiguracaoUsuario
@@ -27,7 +30,14 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
     public TelaConfiguracaoUsuario(Netflix netflixBancoDeDadosAtual, JFrame telaanterior) {
         this.netflixBancoDeDadosAtual = netflixBancoDeDadosAtual;
         this.telaanterior = telaanterior;
+        this.clientePesquisado = null;
         initComponents();
+    }
+    
+    public void desabilitarCamposConfig(){
+        this.novaSenhaUsuarioText.setEnabled(false);
+        this.novoEmailText.setEnabled(false);
+        this.novoNomeText.setEnabled(false);
     }
     
     /**
@@ -39,31 +49,87 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        mudarNomeDeUsuarioBotao = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        mudarEmailUsuarioBotao = new javax.swing.JButton();
+        mudarSenhaDoUsuarioBotao = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        novoNomeUsuarioLabel = new javax.swing.JLabel();
+        novoEmailUsuarioLabel = new javax.swing.JLabel();
+        novaSenhaUsuarioLabel = new javax.swing.JLabel();
+        novoNomeText = new javax.swing.JTextField();
+        novoEmailText = new javax.swing.JTextField();
+        novaSenhaUsuarioText = new javax.swing.JTextField();
+        salvarTelaConfigBotao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton2.setText("MUDAR NOME DO USUÁRIO");
+        mudarNomeDeUsuarioBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        mudarNomeDeUsuarioBotao.setText("MUDAR NOME DE USUÁRIO");
+        mudarNomeDeUsuarioBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudarNomeDeUsuarioBotaoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel1.setText("TELA DE CONFIGURAÇÃO DO USUÁRIO");
 
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton1.setText("MUDAR E-MAIL DO USUÁRIO");
+        mudarEmailUsuarioBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        mudarEmailUsuarioBotao.setText("MUDAR E-MAIL DE USUÁRIO");
+        mudarEmailUsuarioBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudarEmailUsuarioBotaoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton3.setText("MUDAR SENHA DO USUÁRIO");
+        mudarSenhaDoUsuarioBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        mudarSenhaDoUsuarioBotao.setText("MUDAR SENHA DE USUÁRIO");
+        mudarSenhaDoUsuarioBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudarSenhaDoUsuarioBotaoActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jButton4.setText("SAIR DA TELA DE CONFIGURAÇÃO");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+
+        novoNomeUsuarioLabel.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        novoNomeUsuarioLabel.setText("NOVO NOME:");
+
+        novoEmailUsuarioLabel.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        novoEmailUsuarioLabel.setText("NOVO E-MAIL:");
+
+        novaSenhaUsuarioLabel.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        novaSenhaUsuarioLabel.setText("NOVA SENHA:");
+
+        novoNomeText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                novoNomeTextKeyTyped(evt);
+            }
+        });
+
+        novoEmailText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                novoEmailTextKeyTyped(evt);
+            }
+        });
+
+        novaSenhaUsuarioText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                novaSenhaUsuarioTextKeyTyped(evt);
+            }
+        });
+
+        salvarTelaConfigBotao.setText("Salvar");
+        salvarTelaConfigBotao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarTelaConfigBotaoActionPerformed(evt);
             }
         });
 
@@ -74,32 +140,60 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(mudarEmailUsuarioBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mudarNomeDeUsuarioBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mudarSenhaDoUsuarioBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(novoNomeUsuarioLabel)
+                                    .addComponent(novoEmailUsuarioLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(novoNomeText, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                    .addComponent(novoEmailText)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(novaSenhaUsuarioLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(salvarTelaConfigBotao)
+                                    .addComponent(novaSenhaUsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGap(27, 27, 27)
+                .addComponent(mudarNomeDeUsuarioBotao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mudarEmailUsuarioBotao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mudarSenhaDoUsuarioBotao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novoNomeUsuarioLabel)
+                    .addComponent(novoNomeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novoEmailUsuarioLabel)
+                    .addComponent(novoEmailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(novaSenhaUsuarioLabel)
+                    .addComponent(novaSenhaUsuarioText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addComponent(salvarTelaConfigBotao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(16, 16, 16))
         );
@@ -111,6 +205,55 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
         this.setVisible(false);
         this.telaanterior.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void mudarNomeDeUsuarioBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarNomeDeUsuarioBotaoActionPerformed
+        this.novoNomeText.setEnabled(true);
+        this.novaSenhaUsuarioText.setEnabled(false);
+        this.novoEmailText.setEnabled(false);
+        this.novaSenhaUsuarioText.removeAll();
+        this.novoEmailText.removeAll();
+    }//GEN-LAST:event_mudarNomeDeUsuarioBotaoActionPerformed
+
+    private void mudarEmailUsuarioBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarEmailUsuarioBotaoActionPerformed
+        this.novoNomeText.setEnabled(false);
+        this.novaSenhaUsuarioText.setEnabled(false);
+        this.novoNomeText.removeAll();
+        this.novaSenhaUsuarioText.removeAll();
+        this.novoEmailText.setEnabled(true);
+    }//GEN-LAST:event_mudarEmailUsuarioBotaoActionPerformed
+
+    private void mudarSenhaDoUsuarioBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarSenhaDoUsuarioBotaoActionPerformed
+        this.novoNomeText.setEnabled(false);
+        this.novaSenhaUsuarioText.setEnabled(true);
+        this.novoEmailText.setEnabled(false);
+        this.novoNomeText.removeAll();
+        this.novoEmailText.removeAll();
+    }//GEN-LAST:event_mudarSenhaDoUsuarioBotaoActionPerformed
+
+    private void salvarTelaConfigBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarTelaConfigBotaoActionPerformed
+        
+    }//GEN-LAST:event_salvarTelaConfigBotaoActionPerformed
+
+    private void novoNomeTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_novoNomeTextKeyTyped
+        String caracteres = "/-+,'!@#$%¨&()_+{}][´`^~,<.>:;/?|*=0123456789";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_novoNomeTextKeyTyped
+
+    private void novoEmailTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_novoEmailTextKeyTyped
+        String caracteres = "/-+,'!@#$%¨&()_+{}][´`^~,<.>:;/?|*=0123456789";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_novoEmailTextKeyTyped
+
+    private void novaSenhaUsuarioTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_novaSenhaUsuarioTextKeyTyped
+        String caracteres = "/-+,'!@#$%¨&()_+{}][´`^~,<.>:;/?|*=";
+        if (caracteres.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_novaSenhaUsuarioTextKeyTyped
 
     /**
      * @param args the command line arguments
@@ -148,10 +291,17 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton mudarEmailUsuarioBotao;
+    private javax.swing.JButton mudarNomeDeUsuarioBotao;
+    private javax.swing.JButton mudarSenhaDoUsuarioBotao;
+    private javax.swing.JLabel novaSenhaUsuarioLabel;
+    private javax.swing.JTextField novaSenhaUsuarioText;
+    private javax.swing.JTextField novoEmailText;
+    private javax.swing.JLabel novoEmailUsuarioLabel;
+    private javax.swing.JTextField novoNomeText;
+    private javax.swing.JLabel novoNomeUsuarioLabel;
+    private javax.swing.JButton salvarTelaConfigBotao;
     // End of variables declaration//GEN-END:variables
 }

@@ -77,7 +77,7 @@ public class Netflix {
         }
         return null;
     }
-
+    
     public void cadastrarConteudo(Conteudo C) {
         if (C instanceof Filme) {
             this.Filmes.add((Filme) C);

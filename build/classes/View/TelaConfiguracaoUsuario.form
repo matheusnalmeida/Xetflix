@@ -26,24 +26,43 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jButton4" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jButton4" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" pref="250" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="250" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="mudarEmailUsuarioBotao" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="mudarNomeDeUsuarioBotao" min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="mudarSenhaDoUsuarioBotao" alignment="1" min="-2" pref="250" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="novoNomeUsuarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="novoEmailUsuarioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="novoNomeText" pref="157" max="32767" attributes="0"/>
+                                  <Component id="novoEmailText" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="novaSenhaUsuarioLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="salvarTelaConfigBotao" min="-2" max="-2" attributes="0"/>
+                                  <Component id="novaSenhaUsuarioText" min="-2" pref="158" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,13 +71,30 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="34" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="mudarNomeDeUsuarioBotao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="mudarEmailUsuarioBotao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="mudarSenhaDoUsuarioBotao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="novoNomeUsuarioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="novoNomeText" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="novoEmailUsuarioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="novoEmailText" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="novaSenhaUsuarioLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="novaSenhaUsuarioText" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="salvarTelaConfigBotao" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Component id="jButton4" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
@@ -66,13 +102,16 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="mudarNomeDeUsuarioBotao">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="MUDAR NOME DO USU&#xc1;RIO"/>
+        <Property name="text" type="java.lang.String" value="MUDAR NOME DE USU&#xc1;RIO"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudarNomeDeUsuarioBotaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -82,21 +121,27 @@
         <Property name="text" type="java.lang.String" value="TELA DE CONFIGURA&#xc7;&#xc3;O DO USU&#xc1;RIO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="mudarEmailUsuarioBotao">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="MUDAR E-MAIL DO USU&#xc1;RIO"/>
+        <Property name="text" type="java.lang.String" value="MUDAR E-MAIL DE USU&#xc1;RIO"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudarEmailUsuarioBotaoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="mudarSenhaDoUsuarioBotao">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial Black" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="MUDAR SENHA DO USU&#xc1;RIO"/>
+        <Property name="text" type="java.lang.String" value="MUDAR SENHA DE USU&#xc1;RIO"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mudarSenhaDoUsuarioBotaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
@@ -107,6 +152,53 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="novoNomeUsuarioLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial Black" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NOVO NOME:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="novoEmailUsuarioLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial Black" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NOVO E-MAIL:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="novaSenhaUsuarioLabel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial Black" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="NOVA SENHA:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="novoNomeText">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="novoNomeTextKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="novoEmailText">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="novoEmailTextKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="novaSenhaUsuarioText">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="novaSenhaUsuarioTextKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="salvarTelaConfigBotao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarTelaConfigBotaoActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -8,6 +8,8 @@ package View;
 import javax.swing.JOptionPane;
 import Model.Cliente;
 import Model.Netflix;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
