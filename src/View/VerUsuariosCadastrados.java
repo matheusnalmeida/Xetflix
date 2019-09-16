@@ -92,6 +92,7 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
             tabelaDeUsuarios.getColumnModel().getColumn(3).setResizable(false);
         }
 
+        voltarTelaAdministrador.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         voltarTelaAdministrador.setText("Voltar");
         voltarTelaAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,7 @@ public class VerUsuariosCadastrados extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(voltarTelaAdministrador)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

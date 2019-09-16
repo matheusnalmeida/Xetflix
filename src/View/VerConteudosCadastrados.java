@@ -92,6 +92,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
             tabelaDeConteudos.getColumnModel().getColumn(2).setResizable(false);
         }
 
+        voltarTelaADMBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         voltarTelaADMBotao.setText("Voltar");
         voltarTelaADMBotao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,7 +126,7 @@ public class VerConteudosCadastrados extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(voltarTelaADMBotao)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
