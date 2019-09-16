@@ -5,6 +5,7 @@
  */
 package View;
 
+import Model.Cliente;
 import Model.Netflix;
 import javax.swing.JFrame;
 
@@ -17,6 +18,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     private Netflix netflixBancoDeDadosAtual;
     private JFrame telaanterior;
     private TelaConfiguracaoUsuario telaDeConfiguracaoDoUsuario;
+    private Cliente cliente;
     
     /**
      * Creates new form telaDoUsuario
@@ -25,9 +27,10 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TelaDoUsuario(Netflix netflixBancoDeDadosAtual, JFrame telaanterior) {
+    public TelaDoUsuario(Netflix netflixBancoDeDadosAtual, JFrame telaanterior, Cliente cliente) {
         this.netflixBancoDeDadosAtual = netflixBancoDeDadosAtual;
         this.telaanterior = telaanterior;
+        this.cliente = cliente;
         this.telaDeConfiguracaoDoUsuario = new TelaConfiguracaoUsuario(this.netflixBancoDeDadosAtual, this);
         initComponents();
     }
@@ -198,6 +201,10 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                 new TelaDoUsuario().setVisible(true);
             }
         });
+    }
+
+    public Cliente getCliente() {
+        return cliente;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

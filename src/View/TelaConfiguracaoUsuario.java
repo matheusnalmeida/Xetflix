@@ -8,6 +8,7 @@ package View;
 import Model.Cliente;
 import Model.Netflix;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -17,9 +18,9 @@ import javax.swing.JTextField;
 public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
 
     private Netflix netflixBancoDeDadosAtual;
-    private JFrame telaanterior;
+    private TelaDoUsuario telaAnterior;
     private Cliente clientePesquisado;
-    
+
     /**
      * Creates new form TelaConfiguracaoUsuario
      */
@@ -27,19 +28,19 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TelaConfiguracaoUsuario(Netflix netflixBancoDeDadosAtual, JFrame telaanterior) {
+    public TelaConfiguracaoUsuario(Netflix netflixBancoDeDadosAtual, TelaDoUsuario telaanterior) {
         this.netflixBancoDeDadosAtual = netflixBancoDeDadosAtual;
-        this.telaanterior = telaanterior;
+        this.telaAnterior = telaanterior;
         this.clientePesquisado = null;
         initComponents();
     }
-    
-    public void desabilitarCamposConfig(){
+
+    public void desabilitarCamposConfig() {
         this.novaSenhaUsuarioText.setEnabled(false);
         this.novoEmailText.setEnabled(false);
         this.novoNomeText.setEnabled(false);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -203,7 +204,7 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.setVisible(false);
-        this.telaanterior.setVisible(true);
+        this.telaAnterior.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void mudarNomeDeUsuarioBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mudarNomeDeUsuarioBotaoActionPerformed
@@ -231,7 +232,31 @@ public class TelaConfiguracaoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_mudarSenhaDoUsuarioBotaoActionPerformed
 
     private void salvarTelaConfigBotaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarTelaConfigBotaoActionPerformed
-        
+        String novoNome = this.novoNomeText.getText();
+        String novoEmail = this.novoEmailText.getText();
+        String novaSenha = this.novaSenhaUsuarioText.getText();
+        Cliente cliente = telaAnterior.getCliente();
+
+        if (!("".equals(novoNomeText.getText())) || !("".equals(novoEmailText.getText()))
+                || !("".equals(novaSenhaUsuarioText.getText()))) {
+            if (this.novoNomeText.isEnabled()) {
+                cliente.setNome(novoNome);
+                JOptionPane.showMessageDialog(null, "Nome de usário atualizado!");
+            }
+            if (this.novoEmailText.isEnabled()) {
+                cliente.setEmail(novoEmail);
+                JOptionPane.showMessageDialog(null, "E-mail de usuário atualizado!");
+            }
+            if (this.novaSenhaUsuarioText.isEnabled()) {
+                cliente.setSenha(novaSenha);
+                JOptionPane.showMessageDialog(null, "Senha de usuário atualizado!");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Digite algo em um campo para salvar a ação!");
+        }
+        this.novoNomeText.setText("");
+        this.novoEmailText.setText("");
+        this.novaSenhaUsuarioText.setText("");
     }//GEN-LAST:event_salvarTelaConfigBotaoActionPerformed
 
     private void novoNomeTextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_novoNomeTextKeyTyped
