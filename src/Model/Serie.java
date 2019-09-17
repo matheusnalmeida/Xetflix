@@ -4,6 +4,8 @@
  */
 package Model;
 
+import javax.swing.Icon;
+
 public class Serie extends Conteudo {
 
     private int temporadas;
@@ -12,8 +14,8 @@ public class Serie extends Conteudo {
         super(nome);
     }
     
-    public Serie(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores, int temporadas) {
-        super(nome, categoria, subcategoria, descricao, diretor, listaDeAtores);
+    public Serie(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores,Icon icone, int temporadas) {
+        super(nome, categoria, subcategoria, descricao, diretor, listaDeAtores,icone);
         this.temporadas = temporadas;
     }
 

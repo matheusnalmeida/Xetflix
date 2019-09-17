@@ -4,6 +4,8 @@
  */
 package Model;
 
+import javax.swing.Icon;
+
 public class Filme extends Conteudo {
 
     private int duracao;
@@ -12,8 +14,8 @@ public class Filme extends Conteudo {
         super(nome);
     }
     
-    public Filme(String nome, String categoria, String subcategoria, String descricao, String diretor,String[] listaDeAtores, int duracao) {
-        super(nome, categoria, subcategoria, descricao, diretor,listaDeAtores);
+    public Filme(String nome, String categoria, String subcategoria, String descricao, String diretor,String[] listaDeAtores,Icon icone, int duracao) {
+        super(nome, categoria, subcategoria, descricao, diretor,listaDeAtores,icone);
         this.duracao = duracao;
     }
     

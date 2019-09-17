@@ -4,6 +4,8 @@
  */
 package Model;
 
+import javax.swing.Icon;
+
 public class Conteudo {
 
     private String nome;
@@ -13,18 +15,20 @@ public class Conteudo {
     private int avaliacao;
     private String diretor;
     private String[] listaDeAtores;
-
+    private Icon icone;
+    
     public Conteudo(String nome){
         this.nome = nome;
     }
     
-    public Conteudo(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores) {
+    public Conteudo(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores,Icon icone) {
         this.nome = nome;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
         this.descricao = descricao;
         this.diretor = diretor;
         this.listaDeAtores = listaDeAtores;
+        this.icone = icone;
     }
 
     public void atualizarAvaliacao() {

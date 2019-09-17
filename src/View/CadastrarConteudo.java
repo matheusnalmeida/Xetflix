@@ -5,11 +5,16 @@
  */
 package View;
 
+
 import Model.Filme;
 import javax.swing.JFrame;
 import Model.Netflix;
 import Model.Serie;
+import java.io.File;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,12 +26,16 @@ public class CadastrarConteudo extends javax.swing.JFrame {
     private Netflix netflixBancoDeDados;
     private JFrame telaDoAdministrador;
     private DefaultListModel listModel;
-
+    
     /**
      * Creates new form CadastrarConteudo
      */
     public CadastrarConteudo() {
+        this.netflixBancoDeDados = netflixBancoDeDados;
+        //this.telaDoAdministrador = telaAnterior;
+        this.listModel = new DefaultListModel();
         initComponents();
+        this.preencheImagem();
     }
 
     public CadastrarConteudo(JFrame telaAnterior, Netflix netflixBancoDeDados) {
@@ -45,7 +54,13 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         this.temporadasConteudo.setText("");
         this.listModel.clear();
     }
-
+    
+    public void preencheImagem(){
+        ImageIcon icon = new ImageIcon("..\\Netflix\\src\\images\\no_image.png");
+        this.labelImagem.setIcon(icon);
+        this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
+    }
+    
     public void preencheCategorias() {
         String[] categorias = this.netflixBancoDeDados.getCategorias();
         this.jComboBoxCategorias.removeAllItems();
@@ -103,6 +118,9 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         voltarParaTelaADMBotao = new javax.swing.JButton();
         jComboBoxCategorias = new javax.swing.JComboBox<>();
         jComboBoxSubCategoria = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        buscarImagem = new javax.swing.JButton();
+        labelImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -186,44 +204,56 @@ public class CadastrarConteudo extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Imagem:");
+
+        buscarImagem.setText("Buscar Imagem");
+        buscarImagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarImagemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(219, 219, 219)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(68, 68, 68)
-                        .addComponent(nomeConteudo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBoxFilme)
-                                .addComponent(jLabel9))
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cadastrarConteudo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(219, 219, 219)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(labelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel6))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(68, 68, 68)
+                                .addComponent(nomeConteudo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jCheckBoxFilme)
+                                        .addComponent(jLabel9))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel10))
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(descricaoConteudo)
                                     .addComponent(diretorConteudo)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(atorConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(botaoAdicionarAtorAtriz, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(temporadasConteudo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
@@ -232,18 +262,27 @@ public class CadastrarConteudo extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBoxCategorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jComboBoxSubCategoria, 0, 181, Short.MAX_VALUE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(atorConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botaoAdicionarAtorAtriz, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxCategorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxSubCategoria, 0, 181, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cadastrarConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(voltarParaTelaADMBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buscarImagem)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -274,23 +313,30 @@ public class CadastrarConteudo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(temporadasConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBoxSerie)
                             .addComponent(jCheckBoxFilme))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(duracaoConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(duracaoConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(buscarImagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(temporadasConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cadastrarConteudo, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                    .addComponent(voltarParaTelaADMBotao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                    .addComponent(cadastrarConteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(voltarParaTelaADMBotao, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -313,7 +359,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
             if (this.jCheckBoxFilme.isSelected()) {
                 try {
                     int duracao = Integer.parseInt(this.duracaoConteudo.getText());
-                    Filme novoConteudo = new Filme(nomeConteudoAtual, categoriaAtual, subCategoriaAtual, descricaoAtual, diretorAtual, atoresAtual, duracao);
+                    Filme novoConteudo = new Filme(nomeConteudoAtual, categoriaAtual, subCategoriaAtual, descricaoAtual, diretorAtual, atoresAtual,this.labelImagem.getIcon(), duracao);
                     if (netflixBancoDeDados.cadastrarFilme(novoConteudo)) {
                         JOptionPane.showMessageDialog(null, "Filme cadastrado com sucesso");
                         this.resetarCampos();
@@ -326,7 +372,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
             } else {
                 try {
                     int temporadas = Integer.parseInt(this.temporadasConteudo.getText());
-                    Serie novoConteudo = new Serie(nomeConteudoAtual, categoriaAtual, subCategoriaAtual, descricaoAtual, diretorAtual, atoresAtual, temporadas);
+                    Serie novoConteudo = new Serie(nomeConteudoAtual, categoriaAtual, subCategoriaAtual, descricaoAtual, diretorAtual, atoresAtual,this.labelImagem.getIcon(), temporadas);
                     if (netflixBancoDeDados.cadastrarSerie(novoConteudo)) {
                         JOptionPane.showMessageDialog(null, "Serie cadastrada com sucesso");
                         this.resetarCampos();
@@ -340,7 +386,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Informações essenciais nao foram inseridas");
         }
-        
+
     }//GEN-LAST:event_cadastrarConteudoActionPerformed
 
     private void jCheckBoxSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSerieActionPerformed
@@ -380,6 +426,23 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeConteudoActionPerformed
 
+    private void buscarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagemActionPerformed
+        int escolha = chooserArquivo.showOpenDialog(getParent());
+        File arquivo = chooserArquivo.getSelectedFile();
+        if (arquivo != null) {
+            String caminho = arquivo.getAbsolutePath();
+            ImageIcon icon = new ImageIcon(caminho);
+            this.labelImagem.setIcon(icon);
+            this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
+        }
+    }//GEN-LAST:event_buscarImagemActionPerformed
+    
+    private  ImageIcon redimensionar(JLabel jLabel, int xLargura, int yAltura) {
+        ImageIcon img = new ImageIcon(jLabel.getIcon().toString());
+        img.setImage(img.getImage().getScaledInstance(xLargura, yAltura, 100));
+        return img;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -415,9 +478,11 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         });
     }
 
+    private JFileChooser chooserArquivo = new JFileChooser();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField atorConteudo;
     private javax.swing.JButton botaoAdicionarAtorAtriz;
+    private javax.swing.JButton buscarImagem;
     private javax.swing.JButton cadastrarConteudo;
     private javax.swing.JTextField descricaoConteudo;
     private javax.swing.JTextField diretorConteudo;
@@ -432,10 +497,12 @@ public class CadastrarConteudo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelImagem;
     private javax.swing.JList<String> listaDeAtoresAtrizes;
     private javax.swing.JTextField nomeConteudo;
     private javax.swing.JTextField temporadasConteudo;
