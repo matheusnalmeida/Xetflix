@@ -23,9 +23,44 @@ public class Netflix {
         this.Filmes = new ArrayList<>();
         this.Series = new ArrayList<>();
         this.Clientes = new ArrayList<>();
-        this.categorias = new String[]{"Acao","Aventura","Suspense","Terror","Infantil","Comedia"};
-        this.subcategorias = new String[]{"Acao","Aventura","Suspense","Terror","Infantil","Comedia"};
-    }    
+        this.categorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
+        this.subcategorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
+    }
+
+    public ArrayList<Conteudo> melhoresAvaliados(Double minimo) {
+        ArrayList<Conteudo> vetorMelhoresAvaliados = new ArrayList<>();
+        for (int i = 0; i < this.getFilmes().size(); i++) {
+            if (this.getFilmes().get(i).getAvaliacao() != null && this.getFilmes().get(i).getAvaliacao() >= minimo) {
+                vetorMelhoresAvaliados.add(this.getFilmes().get(i));
+            }
+        }
+        for (int i = 0; i < this.getSeries().size(); i++) {
+            if (this.getSeries().get(i).getAvaliacao() != null && this.getSeries().get(i).getAvaliacao() >= minimo) {
+                vetorMelhoresAvaliados.add(this.getSeries().get(i));
+            }
+        }
+        return this.ordenaMelhoresAvaliados(vetorMelhoresAvaliados);
+    }
+    
+    private ArrayList<Conteudo> ordenaMelhoresAvaliados(ArrayList<Conteudo> vetorDeMelhoresAvaliados){
+
+        //Selection
+        Conteudo menorAvaliacao;
+        int posicaoDomenor;
+        for (int i = 0; i < vetorDeMelhoresAvaliados.size(); i++) {
+            menorAvaliacao = vetorDeMelhoresAvaliados.get(i);
+            posicaoDomenor = i;
+            for (int y = i + 1; y < vetorDeMelhoresAvaliados.size(); y++) {
+                if (menorAvaliacao.getAvaliacao() > vetorDeMelhoresAvaliados.get(y).getAvaliacao()) {
+                    menorAvaliacao = vetorDeMelhoresAvaliados.get(y);
+                    posicaoDomenor = y;
+                }
+            }
+            vetorDeMelhoresAvaliados.set(posicaoDomenor, vetorDeMelhoresAvaliados.get(i));
+            vetorDeMelhoresAvaliados.set(i, menorAvaliacao);
+        }
+        return vetorDeMelhoresAvaliados;
+    }
     
     public boolean cadastrarCliente(Cliente novoCliente) {
         if (!Clientes.contains(novoCliente)) {
@@ -42,7 +77,7 @@ public class Netflix {
         }
         return false;
     }
-    
+
     public boolean cadastrarSerie(Serie novaSerie) {
         if (!Series.contains(novaSerie)) {
             Series.add(novaSerie);
@@ -50,25 +85,25 @@ public class Netflix {
         }
         return false;
     }
-    
-    public Filme buscarFilme(String nome){
+
+    public Filme buscarFilme(String nome) {
         for (Filme filmeAtual : this.Filmes) {
-            if (filmeAtual.equals(new Filme(nome))){
+            if (filmeAtual.equals(new Filme(nome))) {
                 return filmeAtual;
             }
         }
         return null;
     }
-    
-    public Serie buscarSerie(String nome){
+
+    public Serie buscarSerie(String nome) {
         for (Serie serieAtual : this.Series) {
-            if (serieAtual.equals(new Serie(nome))){
+            if (serieAtual.equals(new Serie(nome))) {
                 return serieAtual;
             }
         }
         return null;
     }
-    
+
     public Cliente verificaLoginCliente(String emailInformado, String senhaInformada) {
         for (Cliente clienteAtual : this.Clientes) {
             if ((clienteAtual.getEmail().equals(emailInformado)) && (clienteAtual.getSenha().equals(senhaInformada))) {
@@ -77,7 +112,7 @@ public class Netflix {
         }
         return null;
     }
-    
+
     public void cadastrarConteudo(Conteudo C) {
         if (C instanceof Filme) {
             this.Filmes.add((Filme) C);
@@ -121,7 +156,6 @@ public class Netflix {
     public String[] getSubcategorias() {
         return subcategorias;
     }
-    
 
     @Override
     public String toString() {

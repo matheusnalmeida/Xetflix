@@ -12,16 +12,16 @@ public class Conteudo {
     private String categoria;
     private String subcategoria;
     private String descricao;
-    private int avaliacao;
+    private Double avaliacao;
     private String diretor;
     private String[] listaDeAtores;
     private Icon icone;
-    
-    public Conteudo(String nome){
+
+    public Conteudo(String nome) {
         this.nome = nome;
     }
-    
-    public Conteudo(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores,Icon icone) {
+
+    public Conteudo(String nome, String categoria, String subcategoria, String descricao, String diretor, String[] listaDeAtores, Icon icone) {
         this.nome = nome;
         this.categoria = categoria;
         this.subcategoria = subcategoria;
@@ -81,12 +81,16 @@ public class Conteudo {
         this.descricao = descricao;
     }
 
-    public float getAvaliacao() {
+    public Double getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(int avaliacao) {
-        this.avaliacao = avaliacao;
+    public void setAvaliacao(Double avaliacao) {
+        if (this.avaliacao != null) {
+            this.avaliacao = (this.avaliacao + avaliacao) / 2;
+        } else {
+            this.avaliacao = avaliacao;
+        }
     }
 
     public String getDiretor() {
@@ -101,7 +105,6 @@ public class Conteudo {
         return listaDeAtores;
     }
 
-    
     @Override
     public String toString() {
         return this.getNome();
