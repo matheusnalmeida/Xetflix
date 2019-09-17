@@ -217,6 +217,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     private void telaDeConfigUserBotaoActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
+        this.telaDeConfiguracaoDoUsuario.setVisible(true);
     }
 
     private void sairParaTelaLoginBotaoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,11 +235,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     private void testeBActionPerformed(java.awt.event.ActionEvent evt) {
         this.painelDeMelhoresAvaliados.removeAll();
-        String[] atores = {"adasd"};
-        ImageIcon icon = new ImageIcon("..\\Netflix\\src\\images\\no_image.png");
-        Filme as = new Filme("aas", "das", "adasd", "asdasd", "adsasd", atores, icon, 12);
-        as.setAvaliacao(5.0);
-        this.netflixBancoDeDadosAtual.cadastrarFilme(as);
         ArrayList<Conteudo> melhoresAvaliados = this.netflixBancoDeDadosAtual.melhoresAvaliados(0.0);
         System.out.println(melhoresAvaliados);
         for (int i = 0; i < melhoresAvaliados.size(); i++) {

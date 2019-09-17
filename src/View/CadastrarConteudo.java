@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -53,6 +54,8 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         this.duracaoConteudo.setText("");
         this.temporadasConteudo.setText("");
         this.listModel.clear();
+        this.duracaoConteudo.setEnabled(false);
+        this.temporadasConteudo.setEnabled(false);
     }
     
     public void preencheImagem(){
@@ -399,20 +402,24 @@ public class CadastrarConteudo extends javax.swing.JFrame {
     private void jCheckBoxSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSerieActionPerformed
         if (this.jCheckBoxSerie.isSelected()) {
             this.jCheckBoxFilme.setEnabled(false);
+            this.temporadasConteudo.setEnabled(true);
             this.duracaoConteudo.setEnabled(false);
         } else {
             this.jCheckBoxFilme.setEnabled(true);
-            this.duracaoConteudo.setEnabled(true);
+            this.duracaoConteudo.setEnabled(false);
+            this.temporadasConteudo.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBoxSerieActionPerformed
 
     private void jCheckBoxFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFilmeActionPerformed
         if (this.jCheckBoxFilme.isSelected()) {
+            this.duracaoConteudo.setEnabled(true);
             this.jCheckBoxSerie.setEnabled(false);
             this.temporadasConteudo.setEnabled(false);
         } else {
             this.jCheckBoxSerie.setEnabled(true);
-            this.temporadasConteudo.setEnabled(true);
+            this.duracaoConteudo.setEnabled(false);
+            this.temporadasConteudo.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBoxFilmeActionPerformed
 

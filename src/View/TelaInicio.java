@@ -138,7 +138,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario = this.txtUsuario.getText();
         String senha = new String(this.txtSenha.getPassword());
-        if (usuario.equals("adm") && senha.equals("adm")) {
+        if (usuario.equals("a") && senha.equals("a")) {
             JOptionPane.showMessageDialog(null, "Bem vindo, administrador!");
             this.setVisible(false);
             telaDoAdministrador.setVisible(true);
