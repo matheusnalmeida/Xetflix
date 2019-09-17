@@ -27,17 +27,25 @@ public class Netflix {
         this.subcategorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
     }
 
-    public ArrayList<Conteudo> avaliadosRecentemente(){
+    public ArrayList<Conteudo> avaliadosRecentemente() {
         ArrayList<Conteudo> vetorDeAdicionadosRecentemente = new ArrayList<>();
-        for (int i = this.getFilmes().size()-1; i >= 0; i--) {
-                vetorDeAdicionadosRecentemente.add(this.getFilmes().get(i));
+        int maiorTamanho = this.Filmes.size();
+
+        //Pegando o vetor com maior tamanho
+        if (maiorTamanho < this.Series.size()) {
+            maiorTamanho = this.Series.size();
         }
-        for (int i = this.getSeries().size()-1; i >= 0; i--) {
+        for (int i = maiorTamanho - 1; i >= 0; i--) {
+            if (i < this.Series.size()) {
                 vetorDeAdicionadosRecentemente.add(this.getSeries().get(i));
+            }
+            if (i < this.Filmes.size()) {
+                vetorDeAdicionadosRecentemente.add(this.getFilmes().get(i));
+            }
         }
         return vetorDeAdicionadosRecentemente;
     }
-    
+
     public ArrayList<Conteudo> melhoresAvaliados(Double minimo) {
         ArrayList<Conteudo> vetorMelhoresAvaliados = new ArrayList<>();
         for (int i = 0; i < this.getFilmes().size(); i++) {
@@ -52,8 +60,8 @@ public class Netflix {
         }
         return this.ordenaMelhoresAvaliados(vetorMelhoresAvaliados);
     }
-    
-    private ArrayList<Conteudo> ordenaMelhoresAvaliados(ArrayList<Conteudo> vetorDeMelhoresAvaliados){
+
+    private ArrayList<Conteudo> ordenaMelhoresAvaliados(ArrayList<Conteudo> vetorDeMelhoresAvaliados) {
 
         //Selection
         Conteudo menorAvaliacao;
@@ -72,7 +80,7 @@ public class Netflix {
         }
         return vetorDeMelhoresAvaliados;
     }
-    
+
     public boolean cadastrarCliente(Cliente novoCliente) {
         if (!Clientes.contains(novoCliente)) {
             Clientes.add(novoCliente);

@@ -210,7 +210,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
             botao.setIcon(this.redimensionar(botao, 150, 115));
             this.painelDeAdicionadosRecentemente.add(botao);
         }
-        
         this.painelDeAdicionadosRecentemente.revalidate();
         this.painelDeAdicionadosRecentemente.repaint();
         this.pack();
