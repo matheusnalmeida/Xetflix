@@ -31,10 +31,6 @@ public class Conteudo {
         this.icone = icone;
     }
 
-    public void atualizarAvaliacao() {
-
-    }
-
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -49,6 +45,10 @@ public class Conteudo {
         return (this.nome.equals(Conteudo.getNome()));
     }
 
+    public Icon getIcone() {
+        return icone;
+    }
+    
     public String getNome() {
         return nome;
     }
