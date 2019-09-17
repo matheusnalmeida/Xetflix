@@ -22,7 +22,19 @@ public class Cliente {
         this.email = email;
         this.senha = senha;
     }
-
+    public Conteudo melhoresAvaliados(Conteudo Conteudo, int minimo){
+        if(Conteudo instanceof Filme){
+            Netflix Netflix = new Netflix();
+            
+            for (int i = 0; i < Netflix.getFilmes().size(); i++) {
+            if(Netflix.getFilmes().get(i).getAvaliacao() > minimo){
+                return Netflix.getFilmes().get(i);
+            }
+            
+            }
+        }
+    return null;
+    }
     public void avaliarTitulo(Conteudo C, int avaliacao) {
         if (C instanceof Filme) {
             Netflix N = new Netflix();
