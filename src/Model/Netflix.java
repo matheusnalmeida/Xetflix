@@ -27,6 +27,17 @@ public class Netflix {
         this.subcategorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
     }
 
+    public ArrayList<Conteudo> avaliadosRecentemente(){
+        ArrayList<Conteudo> vetorDeAdicionadosRecentemente = new ArrayList<>();
+        for (int i = this.getFilmes().size()-1; i >= 0; i--) {
+                vetorDeAdicionadosRecentemente.add(this.getFilmes().get(i));
+        }
+        for (int i = this.getSeries().size()-1; i >= 0; i--) {
+                vetorDeAdicionadosRecentemente.add(this.getSeries().get(i));
+        }
+        return vetorDeAdicionadosRecentemente;
+    }
+    
     public ArrayList<Conteudo> melhoresAvaliados(Double minimo) {
         ArrayList<Conteudo> vetorMelhoresAvaliados = new ArrayList<>();
         for (int i = 0; i < this.getFilmes().size(); i++) {

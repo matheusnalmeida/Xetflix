@@ -14,7 +14,7 @@ import Model.Conteudo;
 public class telaDosConteudos extends javax.swing.JFrame {
 
     Conteudo conteudoDaTela;
-    
+
     /**
      * Creates new form telaDosConteudos
      */
@@ -24,10 +24,10 @@ public class telaDosConteudos extends javax.swing.JFrame {
 
     public telaDosConteudos(Conteudo conteudoDaTela) {
         this.conteudoDaTela = conteudoDaTela;
-        this.labelDeConteudo.setText(this.conteudoDaTela.getNome());
         initComponents();
+        this.labelDeConteudo.setText(this.conteudoDaTela.getNome());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

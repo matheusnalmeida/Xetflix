@@ -12,6 +12,7 @@ import Model.Netflix;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,7 +34,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
      */
     public TelaDoUsuario() {
         this.netflixBancoDeDadosAtual = new Netflix();
-
         initComponents();
     }
 
@@ -43,6 +43,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         this.cliente = cliente;
         this.telaDeConfiguracaoDoUsuario = new TelaConfiguracaoUsuario(this.netflixBancoDeDadosAtual, this);
         initComponents();
+        this.AtualizaCadastradosRecentemente();
     }
 
     /**
@@ -54,6 +55,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         testeB = new javax.swing.JButton();
         sairParaTelaLoginBotao = new javax.swing.JButton();
@@ -61,14 +63,12 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         telaDeConfigUserBotao = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        this.painelDeMelhoresAvaliados = new javax.swing.JPanel();
+        painelDeMelhoresAvaliados = new javax.swing.JPanel();
+        painelDeAdicionadosRecentemente = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
@@ -97,11 +97,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jButton1.setText("PESQUISAR");
 
-//        jButton3.addActionListener(new java.awt.event.ActionListener() {
-//            public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                jButton3ActionPerformed(evt);
-//            }
-//        });
         telaDeConfigUserBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         telaDeConfigUserBotao.setText("CONFIGURAÇÃO");
         telaDeConfigUserBotao.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +112,10 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setText("MELHORES AVALIADOS");
+
+        this.painelDeAdicionadosRecentemente.setLayout(new FlowLayout());
+        this.jScrollPane1.setViewportView(this.painelDeAdicionadosRecentemente);
+        this.jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         this.painelDeMelhoresAvaliados.setLayout(new FlowLayout());
         this.jScrollPane2.setViewportView(this.painelDeMelhoresAvaliados);
@@ -146,25 +145,21 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                                 .addGroup(layout.createSequentialGroup()
                                                         .addComponent(jLabel1)
                                                         .addGap(0, 0, Short.MAX_VALUE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jLabel4)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(telaDeConfigUserBotao))
-                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                ))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(testeB)
+                                                .addComponent(jLabel4)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(sairParaTelaLoginBotao))))
-        );
+                                                .addComponent(telaDeConfigUserBotao))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(testeB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sairParaTelaLoginBotao)));
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
@@ -186,9 +181,8 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                )
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -198,9 +192,29 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                         .addComponent(testeB)
                                         .addComponent(sairParaTelaLoginBotao)))
         );
-
         pack();
     }// </editor-fold>                        
+
+    private void AtualizaCadastradosRecentemente() {
+        ArrayList<Conteudo> adicionadosRecentemente = this.netflixBancoDeDadosAtual.avaliadosRecentemente();
+        for (int i = 0; i < adicionadosRecentemente.size(); i++) {
+            Conteudo conteudoAtual = adicionadosRecentemente.get(i);
+            JButton botao = new JButton();
+            botao.setPreferredSize(new Dimension(150, 115));
+            botao.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    botaoAdicionadoRecentementeActionPerformed(evt, conteudoAtual);
+                }
+            });
+            botao.setIcon(conteudoAtual.getIcone());
+            botao.setIcon(this.redimensionar(botao, 150, 115));
+            this.painelDeAdicionadosRecentemente.add(botao);
+        }
+        
+        this.painelDeAdicionadosRecentemente.revalidate();
+        this.painelDeAdicionadosRecentemente.repaint();
+        this.pack();
+    }
 
     private void telaDeConfigUserBotaoActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
@@ -212,6 +226,10 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     }
 
     private void botaoAvaliadoActionPerformed(java.awt.event.ActionEvent evt, Conteudo conteudo) {
+        new telaDosConteudos(conteudo).setVisible(true);
+    }
+
+    private void botaoAdicionadoRecentementeActionPerformed(java.awt.event.ActionEvent evt, Conteudo conteudo) {
         new telaDosConteudos(conteudo).setVisible(true);
     }
 
@@ -227,7 +245,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         for (int i = 0; i < melhoresAvaliados.size(); i++) {
             Conteudo conteudoAtual = melhoresAvaliados.get(i);
             JButton botao = new JButton();
-            //botao.setText("PESQUISAR");
             botao.setPreferredSize(new Dimension(150, 115));
             botao.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,10 +255,9 @@ public class TelaDoUsuario extends javax.swing.JFrame {
             botao.setIcon(this.redimensionar(botao, 150, 115));
             System.out.println("adsasd");
             this.painelDeMelhoresAvaliados.add(botao);
-            this.painelDeMelhoresAvaliados.revalidate();
-            this.painelDeMelhoresAvaliados.repaint();
         }
-
+        this.painelDeMelhoresAvaliados.revalidate();
+        this.painelDeMelhoresAvaliados.repaint();
         this.pack();
     }
 
@@ -293,19 +309,21 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+//    private javax.swing.JButton jButton2;
+//    private javax.swing.JButton jButton3;
+//    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton sairParaTelaLoginBotao;
     private javax.swing.JButton telaDeConfigUserBotao;
     private javax.swing.JButton testeB;
     private javax.swing.JPanel painelDeMelhoresAvaliados;
+    private javax.swing.JPanel painelDeAdicionadosRecentemente;
     // End of variables declaration                   
 }
