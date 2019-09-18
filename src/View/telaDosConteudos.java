@@ -226,7 +226,7 @@ public class telaDosConteudos extends javax.swing.JFrame {
     private String retornarAtores(){
         StringBuilder stringer = new StringBuilder();
         for (int i = 0; i < conteudoDaTela.getListaDeAtores().length; i++) {
-            stringer.append(conteudoDaTela.getListaDeAtores()[i] + " ");
+            stringer.append(conteudoDaTela.getListaDeAtores()[i] + "  ");
         }
         return stringer.toString();
     }
