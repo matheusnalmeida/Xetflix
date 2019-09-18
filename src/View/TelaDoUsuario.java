@@ -28,7 +28,8 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     private JFrame telaanterior;
     private TelaConfiguracaoUsuario telaDeConfiguracaoDoUsuario;
     private Cliente cliente;
-
+    private Conteudo conteudoParaOjButton5;
+    
     /**
      * Creates new form telaDoUsuario
      */
@@ -98,6 +99,18 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jButton1.setText("PESQUISAR");
 
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerfomed(evt);
+            }
+        });
+        
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton5ActionPerfomed(evt);
+                }
+            });
+
         telaDeConfigUserBotao.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         telaDeConfigUserBotao.setText("CONFIGURAÇÃO");
         telaDeConfigUserBotao.addActionListener(new java.awt.event.ActionListener() {
@@ -108,8 +121,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel1.setText("ADICIONADOS RECENTEMENTE");
-
-        jButton5.setText("jButton5");
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel2.setText("MELHORES AVALIADOS");
@@ -230,6 +241,23 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         new telaDosConteudos(conteudo, this, this.cliente).setVisible(true);
     }
 
+    private void jButton1ActionPerfomed(java.awt.event.ActionEvent evt) {
+        String nomeDoConteudo = this.jTextField1.getText();
+        if (!"".equals(nomeDoConteudo)) {
+            this.conteudoParaOjButton5 = this.netflixBancoDeDadosAtual.buscarConteudo(nomeDoConteudo);
+            System.out.println(conteudoParaOjButton5.getNome());
+            this.jButton5.setIcon(conteudoParaOjButton5.getIcone());
+        } else {
+            JOptionPane.showMessageDialog(null, "Informe o nome do conteúdo para ser pesquisado!");
+        }
+    }
+    
+
+    private void jButton5ActionPerfomed(java.awt.event.ActionEvent evt) {
+        new telaDosConteudos(this.conteudoParaOjButton5, this, this.cliente).setVisible(true);
+
+    }
+
     private void botaoAdicionadoRecentementeActionPerformed(java.awt.event.ActionEvent evt, Conteudo conteudo) {
         new telaDosConteudos(conteudo, this, this.cliente).setVisible(true);
     }
@@ -258,7 +286,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
             this.painelDeMelhoresAvaliados.revalidate();
             this.painelDeMelhoresAvaliados.repaint();
             this.pack();
-        } catch(NumberFormatException ex)  {
+        } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Informe um valor numerico");
         }
     }

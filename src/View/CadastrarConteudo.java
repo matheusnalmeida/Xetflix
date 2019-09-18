@@ -10,6 +10,7 @@ import Model.Filme;
 import javax.swing.JFrame;
 import Model.Netflix;
 import Model.Serie;
+import java.awt.Dimension;
 import java.io.File;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -36,7 +37,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         //this.telaDoAdministrador = telaAnterior;
         this.listModel = new DefaultListModel();
         initComponents();
-        this.preencheImagem();
+//        this.preencheImagem();
     }
 
     public CadastrarConteudo(JFrame telaAnterior, Netflix netflixBancoDeDados) {
@@ -58,11 +59,11 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         this.temporadasConteudo.setEnabled(false);
     }
     
-    public void preencheImagem(){
-        ImageIcon icon = new ImageIcon("..Netflix\\src\\images\\no_image.png");
-        this.labelImagem.setIcon(icon);
-        this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
-    }
+//    public void preencheImagem(){
+//        ImageIcon icon = new ImageIcon("..Netflix\\src\\images\\no_image.png");
+//        this.labelImagem.setIcon(icon);
+//        this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
+//    }
     
     public void preencheCategorias() {
         String[] categorias = this.netflixBancoDeDados.getCategorias();
@@ -218,6 +219,8 @@ public class CadastrarConteudo extends javax.swing.JFrame {
                 buscarImagemActionPerformed(evt);
             }
         });
+
+        labelImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/no-image.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -441,6 +444,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeConteudoActionPerformed
 
     private void buscarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarImagemActionPerformed
+        this.chooserArquivo.setPreferredSize(new Dimension(700, 500));
         int escolha = chooserArquivo.showOpenDialog(getParent());
         File arquivo = chooserArquivo.getSelectedFile();
         if (arquivo != null) {

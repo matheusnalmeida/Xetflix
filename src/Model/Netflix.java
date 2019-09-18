@@ -15,6 +15,7 @@ public class Netflix {
 
     private ArrayList<Filme> Filmes;
     private ArrayList<Serie> Series;
+    private ArrayList<Conteudo> Conteudo;
     private ArrayList<Cliente> Clientes;
     private String[] categorias;
     private String[] subcategorias;
@@ -22,6 +23,7 @@ public class Netflix {
     public Netflix() {
         this.Filmes = new ArrayList<>();
         this.Series = new ArrayList<>();
+        this.Conteudo = new ArrayList<>();
         this.Clientes = new ArrayList<>();
         this.categorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
         this.subcategorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
@@ -92,6 +94,7 @@ public class Netflix {
     public boolean cadastrarFilme(Filme novoFilme) {
         if (!Filmes.contains(novoFilme)) {
             Filmes.add(novoFilme);
+            Conteudo.add(novoFilme);
             return true;
         }
         return false;
@@ -100,6 +103,7 @@ public class Netflix {
     public boolean cadastrarSerie(Serie novaSerie) {
         if (!Series.contains(novaSerie)) {
             Series.add(novaSerie);
+            Conteudo.add(novaSerie);
             return true;
         }
         return false;
@@ -122,7 +126,16 @@ public class Netflix {
         }
         return null;
     }
-
+    
+    public Conteudo buscarConteudo(String nome){
+        for (Conteudo conteudo : this.Conteudo) {
+            if (nome.equals(conteudo.getNome())) {
+                return conteudo;
+            }
+        }
+        return null;
+    }
+    
     public Cliente verificaLoginCliente(String emailInformado, String senhaInformada) {
         for (Cliente clienteAtual : this.Clientes) {
             if ((clienteAtual.getEmail().equals(emailInformado)) && (clienteAtual.getSenha().equals(senhaInformada))) {
@@ -176,6 +189,10 @@ public class Netflix {
         return subcategorias;
     }
 
+    public ArrayList<Conteudo> getConteudo() {
+        return Conteudo;
+    }
+ 
     @Override
     public String toString() {
         return "Netflix{" + "Clientes=" + Clientes + '}';

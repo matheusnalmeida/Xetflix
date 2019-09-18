@@ -191,7 +191,7 @@ public class TelaDoADM extends javax.swing.JFrame {
         this.cadastrarConteudo.resetarCampos();
         this.cadastrarConteudo.preencheCategorias();
         this.cadastrarConteudo.preencheSubCategorias();
-        this.cadastrarConteudo.preencheImagem();
+//        this.cadastrarConteudo.preencheImagem();
         this.cadastrarConteudo.setVisible(true);
     }//GEN-LAST:event_cadastrarConteudoBotaoActionPerformed
 
