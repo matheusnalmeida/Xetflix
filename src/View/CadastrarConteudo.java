@@ -59,7 +59,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
     }
     
     public void preencheImagem(){
-        ImageIcon icon = new ImageIcon("..\\Netflix\\src\\images\\no_image.png");
+        ImageIcon icon = new ImageIcon("..Netflix\\src\\images\\no_image.png");
         this.labelImagem.setIcon(icon);
         this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
     }
