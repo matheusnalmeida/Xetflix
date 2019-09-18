@@ -12,6 +12,7 @@ public class Cliente {
     private String cpf;
     private String email;
     private String senha;
+    private ArrayList<Conteudo> conteudosAvaliados;
 
     public Cliente(String email, String senha) {
         this.email = email;
@@ -23,10 +24,12 @@ public class Cliente {
         this.cpf = cpf;
         this.email = email;
         this.senha = senha;
+        this.conteudosAvaliados = new ArrayList<>();
     }
 
-        public void avaliarTitulo(Conteudo C, Double avaliacao) {
+    public void avaliarTitulo(Conteudo C, Double avaliacao) {
         C.setAvaliacao(avaliacao);
+        this.conteudosAvaliados.add(C);
     }
 
     public String getNome() {
@@ -56,6 +59,11 @@ public class Cliente {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public ArrayList<Conteudo> getConteudosAvaliados() {
+        return conteudosAvaliados;
+    }
+    
 
     public boolean equals(Object obj) {
 

@@ -7,7 +7,6 @@ package View;
 
 import Model.Cliente;
 import Model.Conteudo;
-import Model.Filme;
 import Model.Netflix;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -16,6 +15,7 @@ import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.ScrollPaneConstants;
 
 /**
@@ -57,7 +57,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        testeB = new javax.swing.JButton();
+        botaoDeAvaliados = new javax.swing.JButton();
         sairParaTelaLoginBotao = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -74,8 +74,9 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 153));
         setResizable(false);
 
-        testeB.setText("teste");
-        testeB.addActionListener(new java.awt.event.ActionListener() {
+        botaoDeAvaliados.setText("Filmes Avaliados");
+        botaoDeAvaliados.setFont(new java.awt.Font("Arial Black", 1, 12));
+        botaoDeAvaliados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 testeBActionPerformed(evt);
             }
@@ -157,7 +158,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                                 .addComponent(telaDeConfigUserBotao))
                                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(testeB)
+                                .addComponent(botaoDeAvaliados)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(sairParaTelaLoginBotao)));
         layout.setVerticalGroup(
@@ -189,7 +190,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(testeB)
+                                        .addComponent(botaoDeAvaliados)
                                         .addComponent(sairParaTelaLoginBotao)))
         );
         pack();
@@ -226,34 +227,40 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     }
 
     private void botaoAvaliadoActionPerformed(java.awt.event.ActionEvent evt, Conteudo conteudo) {
-        new telaDosConteudos(conteudo).setVisible(true);
+        new telaDosConteudos(conteudo, this, this.cliente).setVisible(true);
     }
 
     private void botaoAdicionadoRecentementeActionPerformed(java.awt.event.ActionEvent evt, Conteudo conteudo) {
-        new telaDosConteudos(conteudo).setVisible(true);
+        new telaDosConteudos(conteudo, this, this.cliente).setVisible(true);
     }
 
     private void testeBActionPerformed(java.awt.event.ActionEvent evt) {
-        this.painelDeMelhoresAvaliados.removeAll();
-        ArrayList<Conteudo> melhoresAvaliados = this.netflixBancoDeDadosAtual.melhoresAvaliados(0.0);
-        System.out.println(melhoresAvaliados);
-        for (int i = 0; i < melhoresAvaliados.size(); i++) {
-            Conteudo conteudoAtual = melhoresAvaliados.get(i);
-            JButton botao = new JButton();
-            botao.setPreferredSize(new Dimension(150, 115));
-            botao.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    botaoAvaliadoActionPerformed(evt, conteudoAtual);
-                }
-            });
-            botao.setIcon(conteudoAtual.getIcone());
-            botao.setIcon(this.redimensionar(botao, 150, 115));
-            System.out.println("adsasd");
-            this.painelDeMelhoresAvaliados.add(botao);
+        try {
+            String valorMinimoString = JOptionPane.showInputDialog("Informe o valor minimo de avaliacao a ser demonstrado:");
+            Double valorMinimo = Double.parseDouble(valorMinimoString);
+            this.painelDeMelhoresAvaliados.removeAll();
+            ArrayList<Conteudo> melhoresAvaliados = this.netflixBancoDeDadosAtual.melhoresAvaliados(valorMinimo);
+            System.out.println(melhoresAvaliados);
+            for (int i = 0; i < melhoresAvaliados.size(); i++) {
+                Conteudo conteudoAtual = melhoresAvaliados.get(i);
+                JButton botao = new JButton();
+                botao.setPreferredSize(new Dimension(150, 115));
+                botao.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        botaoAvaliadoActionPerformed(evt, conteudoAtual);
+                    }
+                });
+                botao.setIcon(conteudoAtual.getIcone());
+                botao.setIcon(this.redimensionar(botao, 150, 115));
+                System.out.println("adsasd");
+                this.painelDeMelhoresAvaliados.add(botao);
+            }
+            this.painelDeMelhoresAvaliados.revalidate();
+            this.painelDeMelhoresAvaliados.repaint();
+            this.pack();
+        } catch(NumberFormatException ex)  {
+            JOptionPane.showMessageDialog(null, "Informe um valor numerico");
         }
-        this.painelDeMelhoresAvaliados.revalidate();
-        this.painelDeMelhoresAvaliados.repaint();
-        this.pack();
     }
 
     private ImageIcon redimensionar(JButton botao, int xLargura, int yAltura) {
@@ -304,9 +311,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
-//    private javax.swing.JButton jButton2;
-//    private javax.swing.JButton jButton3;
-//    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -317,7 +321,7 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton sairParaTelaLoginBotao;
     private javax.swing.JButton telaDeConfigUserBotao;
-    private javax.swing.JButton testeB;
+    private javax.swing.JButton botaoDeAvaliados;
     private javax.swing.JPanel painelDeMelhoresAvaliados;
     private javax.swing.JPanel painelDeAdicionadosRecentemente;
     // End of variables declaration                   

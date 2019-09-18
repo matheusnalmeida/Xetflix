@@ -376,7 +376,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Filme com nome informado ja existe no sistema");
                     }
-                } catch (NumberFormatException e) {
+                } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(null, "Informe um valor numerico na duracao do filme");
                 }
             } else {
