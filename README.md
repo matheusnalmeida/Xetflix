@@ -14,10 +14,13 @@ O aplicativo possui diversas funcionalidades de interacao do usuario com o progr
 
 #### Tipos de logins
 O aplicativo possui um sistema de login em que o usuario podera logar como administrador ou Cliente informando o seu email e senha, sendo diferenciadas as funcionalidades de acordo com o tipo de login. Inicialmente o programa não tera nenhum Cliente cadastrado, sendo necessario o usuario se cadastrar preechendo os campos requeridos ao clicar no botao **Cadastrar usuário**. Em relacao ao login como administrador, o programa ira possuir como padrao o administrador com email e senha definidos como **a**.
+![Alt ou título da imagem](URL da imagem)
+
 
 
 ## Creditos
-Abaixo esta o link do perfil dos outros responsaveis pela criação deste aplicativo
-Creditos para [Erik Danilo](https://github.com/ErikDCAlmeida)
+Abaixo esta o link do perfil dos outros responsaveis pela criação deste aplicativo<br />
+-[Erik Danilo](https://github.com/ErikDCAlmeida)<br />
+-[Aldo Wanderley](https://github.com/Aldo-1)
 
 
