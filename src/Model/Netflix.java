@@ -61,6 +61,21 @@ public class Netflix {
         return vetorDeAdicionadosRecentemente;
     }
     
+    public ArrayList<Conteudo> retornoPessoa(String nomepessoa){
+        ArrayList<Conteudo> vetorPessoasTrabalhos = new ArrayList<>();
+        for (int i = 0; i < Filmes.size(); i++) {
+            if(Filmes.get(i).getListaDeAtores()[i].equals(nomepessoa)){
+                vetorPessoasTrabalhos.add(Filmes.get(i));
+            }
+        }
+        for (int i = 0; i < Series.size(); i++) {
+               if(Series.get(i).getListaDeAtores()[i].equals(nomepessoa)){
+                vetorPessoasTrabalhos.add(Series.get(i));
+            }
+        }
+        return vetorPessoasTrabalhos;
+    }
+    
     public ArrayList<Conteudo> retornoCategoria(String categoria){
         ArrayList<Conteudo> vetorRecente = new ArrayList<>();
         for (int i = 0; i < Filmes.size(); i++) {
