@@ -210,6 +210,12 @@ public class CadastrarConteudo extends javax.swing.JFrame {
             }
         });
 
+        jComboBoxCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCategoriasActionPerformed(evt);
+            }
+        });
+
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel6.setText("IMAGEM:");
 
@@ -454,6 +460,10 @@ public class CadastrarConteudo extends javax.swing.JFrame {
             this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
         }
     }//GEN-LAST:event_buscarImagemActionPerformed
+
+    private void jComboBoxCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCategoriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCategoriasActionPerformed
     
     private  ImageIcon redimensionar(JLabel jLabel, int xLargura, int yAltura) {
         ImageIcon img = new ImageIcon(jLabel.getIcon().toString());

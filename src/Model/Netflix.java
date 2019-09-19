@@ -60,7 +60,22 @@ public class Netflix {
         }
         return vetorDeAdicionadosRecentemente;
     }
-
+    
+    public ArrayList<Conteudo> retornoCategoria(String categoria){
+        ArrayList<Conteudo> vetorRecente = new ArrayList<>();
+        for (int i = 0; i < Filmes.size(); i++) {
+            if(Filmes.get(i).getCategoria().equals(categoria)){
+                vetorRecente.add(Filmes.get(i));
+            }
+        }
+        for (int i = 0; i < Series.size(); i++) {
+            if(Series.get(i).getCategoria().equals(categoria)){
+                vetorRecente.add(Series.get(i));
+            }
+        }
+        return vetorRecente;
+    }
+    
     public LinkedList<Conteudo> melhoresAvaliados(Integer minimo){
         LinkedList<Conteudo> listaDeConteudosMelhoresAvaliados = new LinkedList<>();
         for (int i = minimo; i <= 5; i++) {
