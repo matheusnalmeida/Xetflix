@@ -12,7 +12,7 @@ public class Conteudo {
     private String categoria;
     private String subcategoria;
     private String descricao;
-    private Double avaliacao;
+    private Integer avaliacao;
     private String diretor;
     private String[] listaDeAtores;
     private Icon icone;
@@ -81,11 +81,11 @@ public class Conteudo {
         this.descricao = descricao;
     }
 
-    public Double getAvaliacao() {
+    public Integer getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(Double avaliacao) {
+    public void setAvaliacao(int avaliacao) {
         if (this.avaliacao != null) {
             this.avaliacao = (this.avaliacao + avaliacao) / 2;
         } else {

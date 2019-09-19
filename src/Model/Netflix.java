@@ -6,6 +6,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  *
@@ -19,7 +21,8 @@ public class Netflix {
     private ArrayList<Cliente> Clientes;
     private String[] categorias;
     private String[] subcategorias;
-
+    private HashMap<Integer,LinkedList<Conteudo>> hashMapDeAvaliados;
+    
     public Netflix() {
         this.Filmes = new ArrayList<>();
         this.Series = new ArrayList<>();
@@ -27,6 +30,16 @@ public class Netflix {
         this.Clientes = new ArrayList<>();
         this.categorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
         this.subcategorias = new String[]{"Acao", "Aventura", "Suspense", "Terror", "Infantil", "Comedia"};
+        this.preencheHashMap();
+    }
+    
+    public void adicionaNovoConteudoAvaliado(Integer key, Conteudo novoContedudo){
+        this.hashMapDeAvaliados.get(key).add(novoContedudo);
+    }
+    
+    public void mudaAvaliacaoConteudo(Integer keyAntiga,Integer keyNova,Conteudo conteudo){
+        this.hashMapDeAvaliados.get(keyAntiga).remove(conteudo);
+        this.hashMapDeAvaliados.get(keyNova).add(conteudo);
     }
 
     public ArrayList<Conteudo> avaliadosRecentemente() {
@@ -48,39 +61,15 @@ public class Netflix {
         return vetorDeAdicionadosRecentemente;
     }
 
-    public ArrayList<Conteudo> melhoresAvaliados(Double minimo) {
-        ArrayList<Conteudo> vetorMelhoresAvaliados = new ArrayList<>();
-        for (int i = 0; i < this.getFilmes().size(); i++) {
-            if (this.getFilmes().get(i).getAvaliacao() != null && this.getFilmes().get(i).getAvaliacao() >= minimo) {
-                vetorMelhoresAvaliados.add(this.getFilmes().get(i));
+    public LinkedList<Conteudo> melhoresAvaliados(Integer minimo){
+        LinkedList<Conteudo> listaDeConteudosMelhoresAvaliados = new LinkedList<>();
+        for (int i = minimo; i <= 5; i++) {
+            LinkedList<Conteudo> linkedListAtual = this.hashMapDeAvaliados.get(i);
+            for (Conteudo conteudo : linkedListAtual) {
+                listaDeConteudosMelhoresAvaliados.add(conteudo);
             }
         }
-        for (int i = 0; i < this.getSeries().size(); i++) {
-            if (this.getSeries().get(i).getAvaliacao() != null && this.getSeries().get(i).getAvaliacao() >= minimo) {
-                vetorMelhoresAvaliados.add(this.getSeries().get(i));
-            }
-        }
-        return this.ordenaMelhoresAvaliados(vetorMelhoresAvaliados);
-    }
-
-    private ArrayList<Conteudo> ordenaMelhoresAvaliados(ArrayList<Conteudo> vetorDeMelhoresAvaliados) {
-
-        //Selection
-        Conteudo menorAvaliacao;
-        int posicaoDomenor;
-        for (int i = 0; i < vetorDeMelhoresAvaliados.size(); i++) {
-            menorAvaliacao = vetorDeMelhoresAvaliados.get(i);
-            posicaoDomenor = i;
-            for (int y = i + 1; y < vetorDeMelhoresAvaliados.size(); y++) {
-                if (menorAvaliacao.getAvaliacao() > vetorDeMelhoresAvaliados.get(y).getAvaliacao()) {
-                    menorAvaliacao = vetorDeMelhoresAvaliados.get(y);
-                    posicaoDomenor = y;
-                }
-            }
-            vetorDeMelhoresAvaliados.set(posicaoDomenor, vetorDeMelhoresAvaliados.get(i));
-            vetorDeMelhoresAvaliados.set(i, menorAvaliacao);
-        }
-        return vetorDeMelhoresAvaliados;
+        return listaDeConteudosMelhoresAvaliados;
     }
 
     public boolean cadastrarCliente(Cliente novoCliente) {
@@ -153,10 +142,15 @@ public class Netflix {
         }
     }
 
-    public void alterarConteudo() {
-
+    private void preencheHashMap(){
+        this.hashMapDeAvaliados = new HashMap<>();
+        this.hashMapDeAvaliados.put(1, new LinkedList<>());
+        this.hashMapDeAvaliados.put(2, new LinkedList<>());
+        this.hashMapDeAvaliados.put(3, new LinkedList<>());
+        this.hashMapDeAvaliados.put(4, new LinkedList<>());
+        this.hashMapDeAvaliados.put(5, new LinkedList<>());
     }
-
+    
     public ArrayList<Filme> getFilmes() {
         return Filmes;
     }

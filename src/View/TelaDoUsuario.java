@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -253,9 +254,9 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     private void geraAvaliadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_geraAvaliadosActionPerformed
         try {
             String valorMinimoString = JOptionPane.showInputDialog("Informe o valor minimo de avaliacao a ser demonstrado:");
-            Double valorMinimo = Double.parseDouble(valorMinimoString);
+            Integer valorMinimo = Integer.parseInt(valorMinimoString);
             this.painelDeMelhoresAvaliados.removeAll();
-            ArrayList<Conteudo> melhoresAvaliados = this.netflixBancoDeDadosAtual.melhoresAvaliados(valorMinimo);
+            LinkedList<Conteudo> melhoresAvaliados = this.netflixBancoDeDadosAtual.melhoresAvaliados(valorMinimo);
             for (int i = 0; i < melhoresAvaliados.size(); i++) {
                 Conteudo conteudoAtual = melhoresAvaliados.get(i);
                 JButton botao = new JButton();
@@ -357,6 +358,10 @@ public class TelaDoUsuario extends javax.swing.JFrame {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public Netflix getNetflixBancoDeDadosAtual() {
+        return netflixBancoDeDadosAtual;
     }
 
     private javax.swing.JPanel painelDeRecentementeAvaliados;

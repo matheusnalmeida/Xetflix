@@ -27,7 +27,7 @@ public class Cliente {
         this.conteudosAvaliados = new ArrayList<>();
     }
 
-    public void avaliarTitulo(Conteudo C, Double avaliacao) {
+    public void avaliarTitulo(Conteudo C, Integer avaliacao) {
         C.setAvaliacao(avaliacao);
         this.conteudosAvaliados.add(C);
     }

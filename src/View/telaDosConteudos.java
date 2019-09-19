@@ -19,7 +19,7 @@ public class telaDosConteudos extends javax.swing.JFrame {
 
     Cliente clienteAtual;
     Conteudo conteudoDaTela;
-    JFrame telaAnterior;
+    TelaDoUsuario telaAnterior;
 
     /**
      * Creates new form telaDosConteudos
@@ -28,7 +28,7 @@ public class telaDosConteudos extends javax.swing.JFrame {
         initComponents();
     }
 
-    public telaDosConteudos(Conteudo conteudoDaTela, JFrame telaAnterior,Cliente clienteAtual) {
+    public telaDosConteudos(Conteudo conteudoDaTela, TelaDoUsuario telaAnterior,Cliente clienteAtual) {
         this.conteudoDaTela = conteudoDaTela;
         this.clienteAtual = clienteAtual;
         this.telaAnterior = telaAnterior;
@@ -241,16 +241,23 @@ public class telaDosConteudos extends javax.swing.JFrame {
         if (modeloSelecionado == null) {
             JOptionPane.showMessageDialog(null, "Selecione ao menos uma opcao de avaliacao");
         } else {
+            Integer avaliacaoAntiga = this.conteudoDaTela.getAvaliacao();
             if (this.botao1.getModel().equals(modeloSelecionado)) {
-                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,1.0);
+                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,1);
             } else if (this.botao2.getModel().equals(modeloSelecionado)) {
-                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,2.0);
+                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,2);
             } else if (this.botao3.getModel().equals(modeloSelecionado)) {
-                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,3.0);
+                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,3);
             } else if (this.botao4.getModel().equals(modeloSelecionado)) {
-                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,4.0);
+                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,4);
             } else if (this.botao5.getModel().equals(modeloSelecionado)) {
-                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,5.0);
+                this.clienteAtual.avaliarTitulo(this.conteudoDaTela,5);
+            }
+            Integer novaAvaliacao = this.conteudoDaTela.getAvaliacao();
+            if (avaliacaoAntiga == null){
+                this.telaAnterior.getNetflixBancoDeDadosAtual().adicionaNovoConteudoAvaliado(novaAvaliacao, conteudoDaTela);
+            }else{
+                this.telaAnterior.getNetflixBancoDeDadosAtual().mudaAvaliacaoConteudo(avaliacaoAntiga, novaAvaliacao, conteudoDaTela);
             }
             this.botao1.setEnabled(false);
             this.botao2.setEnabled(false);
