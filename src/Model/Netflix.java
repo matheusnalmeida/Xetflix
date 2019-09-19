@@ -60,20 +60,34 @@ public class Netflix {
         }
         return vetorDeAdicionadosRecentemente;
     }
+    public ArrayList<Conteudo> retornoDiretor(String nomePessoa){
+        ArrayList<Conteudo> vetorDiretorTrabalhos = new ArrayList<>();
+        for (int i = 0; i < Filmes.size(); i++) {
+            if(Filmes.get(i).getDiretor().equals(nomePessoa)){
+                vetorDiretorTrabalhos.add(Filmes.get(i));
+            }
+        }
+        for (int i = 0; i < Series.size(); i++) {
+             if(Series.get(i).getDiretor().equals(nomePessoa)){
+                vetorDiretorTrabalhos.add(Series.get(i));
+            }
+        }
+    return vetorDiretorTrabalhos;
+    }
     
-    public ArrayList<Conteudo> retornoPessoa(String nomepessoa){
-        ArrayList<Conteudo> vetorPessoasTrabalhos = new ArrayList<>();
+    public ArrayList<Conteudo> retornoAtores( String nomepessoa){
+        ArrayList<Conteudo> vetorAtoresTrabalhos = new ArrayList<>();
         for (int i = 0; i < Filmes.size(); i++) {
             if(Filmes.get(i).getListaDeAtores()[i].equals(nomepessoa)){
-                vetorPessoasTrabalhos.add(Filmes.get(i));
+                vetorAtoresTrabalhos.add(Filmes.get(i));
             }
         }
         for (int i = 0; i < Series.size(); i++) {
                if(Series.get(i).getListaDeAtores()[i].equals(nomepessoa)){
-                vetorPessoasTrabalhos.add(Series.get(i));
+                vetorAtoresTrabalhos.add(Series.get(i));
             }
         }
-        return vetorPessoasTrabalhos;
+        return vetorAtoresTrabalhos;
     }
     
     public ArrayList<Conteudo> retornoCategoria(String categoria){

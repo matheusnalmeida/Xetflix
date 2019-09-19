@@ -134,6 +134,8 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         txtNomePessoa = new javax.swing.JTextField();
         ScroolNomePessoa = new javax.swing.JScrollPane();
         jButton1 = new javax.swing.JButton();
+        jRadioAtor = new javax.swing.JRadioButton();
+        jRadioDiretor = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -262,6 +264,20 @@ public class TelaDoUsuario extends javax.swing.JFrame {
             }
         });
 
+        jRadioAtor.setText("Ator");
+        jRadioAtor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioAtorActionPerformed(evt);
+            }
+        });
+
+        jRadioDiretor.setText("Diretor");
+        jRadioDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioDiretorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -285,10 +301,6 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(198, 198, 198)
-                                .addComponent(txtNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(111, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,11 +308,21 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                                         .addComponent(jLabel5)
                                         .addGap(161, 161, 161))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(200, 200, 200))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(ScroolNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap())))))))
+                                        .addContainerGap())
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(197, 197, 197))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(198, 198, 198)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioAtor)
+                                        .addGap(116, 116, 116)
+                                        .addComponent(jRadioDiretor)
+                                        .addGap(29, 29, 29))
+                                    .addComponent(txtNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(111, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -324,9 +346,13 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioAtor)
+                            .addComponent(jRadioDiretor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                        .addGap(18, 18, 18)
                         .addComponent(ScroolNomePessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -441,8 +467,9 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboCategoriaActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(jRadioAtor.isSelected()){
         this.painelDePesquisarNomes.removeAll();
-        ArrayList<Conteudo> Ator = this.netflixBancoDeDadosAtual.retornoPessoa(txtNomePessoa.getText());
+        ArrayList<Conteudo> Ator = this.netflixBancoDeDadosAtual.retornoAtores(txtNomePessoa.getText());
         if (!Ator.isEmpty()) {
             for (int i = 0; i < Ator.size(); i++) {
                 //Vai retornar o filme ou a serie que o ator trabalha
@@ -459,12 +486,52 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                 this.painelDePesquisarNomes.add(botao);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Pessoa não existe");
+            JOptionPane.showMessageDialog(null, "Ator não existe");
+        }
+        }else{
+            
+        this.painelDePesquisarNomes.removeAll();
+        ArrayList<Conteudo> Diretor = this.netflixBancoDeDadosAtual.retornoDiretor(txtNomePessoa.getText());
+        if (!Diretor.isEmpty()) {
+            for (int i = 0; i < Diretor.size(); i++) {
+                //Vai retornar o filme ou a serie que o ator trabalha
+                Conteudo atual = Diretor.get(i);
+                JButton botao = new JButton();
+                botao.setPreferredSize(new Dimension(150, 115));
+                botao.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        botaoDeConteudoActionPerformed(evt, atual);
+                    }
+                });
+                botao.setIcon(atual.getIcone());
+                botao.setIcon(this.redimensionar(botao, 150, 115));
+                this.painelDePesquisarNomes.add(botao);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Diretor não existe");
+        }
+           
         }
         this.painelDePesquisarNomes.revalidate();
         this.painelDePesquisarNomes.repaint();
-        this.pack();
+        this.pack(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioAtorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioAtorActionPerformed
+       if(jRadioAtor.isSelected()){
+           jRadioDiretor.setEnabled(false);
+       }else{
+           jRadioDiretor.setEnabled(true);
+       }
+    }//GEN-LAST:event_jRadioAtorActionPerformed
+
+    private void jRadioDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioDiretorActionPerformed
+        if(jRadioDiretor.isSelected()){
+           jRadioAtor.setEnabled(false);
+       }else{
+           jRadioAtor.setEnabled(true);
+       }
+    }//GEN-LAST:event_jRadioDiretorActionPerformed
 
     private ImageIcon redimensionar(JButton botao, int xLargura, int yAltura) {
         ImageIcon img = new ImageIcon(botao.getIcon().toString());
@@ -536,6 +603,8 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioAtor;
+    private javax.swing.JRadioButton jRadioDiretor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane painelCategoriaScroll;
     private javax.swing.JButton sairDaTela;
