@@ -59,12 +59,12 @@ public class TelaDoUsuario extends javax.swing.JFrame {
         this.painelDeRecentementeAvaliados = new javax.swing.JPanel();
         this.painelDeNovos = new javax.swing.JPanel();
         this.painelDePesquisarNomes = new javax.swing.JPanel();
-        
+
         this.painelDeNovos.setLayout(new FlowLayout());
         this.painelDePesquisarNomes.setLayout(new FlowLayout());
         this.ScroolNomePessoa.setViewportView(this.painelDePesquisarNomes);
         this.painelCategoriaScroll.setViewportView(this.painelDeNovos);
-        
+
         this.painelDeMelhoresAvaliados.setLayout(new FlowLayout());
         this.scrollPaneMelhoresAvaliados.setViewportView(this.painelDeMelhoresAvaliados);
         this.painelDeRecentementeAvaliados.setLayout(new FlowLayout());
@@ -81,9 +81,9 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     }
 
     public void categoriaAdicionar() {
-        
+
         String[] categorias = this.netflixBancoDeDadosAtual.getCategorias();
-     
+
         this.jComboCategoria.addItem("<Selecionar item>");
         for (int i = 0; i < categorias.length; i++) {
             this.jComboCategoria.addItem(categorias[i]);
@@ -400,28 +400,53 @@ public class TelaDoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoPesquisarActionPerformed
 
     private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
-        if(jComboCategoria != null){
-        this.painelDeNovos.removeAll();
-        String categoria = null;
-        if (jComboCategoria.getSelectedItem().equals("Acao")) {
-            categoria = "Acao";
-        } else if (jComboCategoria.getSelectedItem().equals("Aventura")) {
-            categoria = "Aventura";
-        } else if (jComboCategoria.getSelectedItem().equals("Suspense")) {
-            categoria = "Suspense";
-        } else if (jComboCategoria.getSelectedItem().equals("Terror")) {
-            categoria = "Terror";
-        } else if (jComboCategoria.getSelectedItem().equals("Infantil")) {
-            categoria = "Infantil";
-        } else if (jComboCategoria.getSelectedItem().equals("Comedia")) {
-            categoria = "Comedia";
-        }
-        if (categoria != null) {
+        if (jComboCategoria != null) {
+            this.painelDeNovos.removeAll();
+            String categoria = null;
+            if (jComboCategoria.getSelectedItem().equals("Acao")) {
+                categoria = "Acao";
+            } else if (jComboCategoria.getSelectedItem().equals("Aventura")) {
+                categoria = "Aventura";
+            } else if (jComboCategoria.getSelectedItem().equals("Suspense")) {
+                categoria = "Suspense";
+            } else if (jComboCategoria.getSelectedItem().equals("Terror")) {
+                categoria = "Terror";
+            } else if (jComboCategoria.getSelectedItem().equals("Infantil")) {
+                categoria = "Infantil";
+            } else if (jComboCategoria.getSelectedItem().equals("Comedia")) {
+                categoria = "Comedia";
+            }
+            if (categoria != null) {
 
-            ArrayList<Conteudo> Categoria = this.netflixBancoDeDadosAtual.retornoCategoria(categoria);
-         
-            for (int i = 0; i < Categoria.size(); i++) {
-                Conteudo atual = Categoria.get(i);
+                ArrayList<Conteudo> Categoria = this.netflixBancoDeDadosAtual.retornoCategoria(categoria);
+
+                for (int i = 0; i < Categoria.size(); i++) {
+                    Conteudo atual = Categoria.get(i);
+                    JButton botao = new JButton();
+                    botao.setPreferredSize(new Dimension(150, 115));
+                    botao.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            botaoDeConteudoActionPerformed(evt, atual);
+                        }
+                    });
+                    botao.setIcon(atual.getIcone());
+                    botao.setIcon(this.redimensionar(botao, 150, 115));
+                    this.painelDeNovos.add(botao);
+                }
+                this.painelDeNovos.revalidate();
+                this.painelDeNovos.repaint();
+                this.pack();
+            }
+        }
+    }//GEN-LAST:event_jComboCategoriaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.painelDePesquisarNomes.removeAll();
+        ArrayList<Conteudo> Ator = this.netflixBancoDeDadosAtual.retornoPessoa(txtNomePessoa.getText());
+        if (!Ator.isEmpty()) {
+            for (int i = 0; i < Ator.size(); i++) {
+                //Vai retornar o filme ou a serie que o ator trabalha
+                Conteudo atual = Ator.get(i);
                 JButton botao = new JButton();
                 botao.setPreferredSize(new Dimension(150, 115));
                 botao.addActionListener(new java.awt.event.ActionListener() {
@@ -431,44 +456,14 @@ public class TelaDoUsuario extends javax.swing.JFrame {
                 });
                 botao.setIcon(atual.getIcone());
                 botao.setIcon(this.redimensionar(botao, 150, 115));
-                this.painelDeNovos.add(botao);
+                this.painelDePesquisarNomes.add(botao);
             }
-            this.painelDeNovos.revalidate();
-            this.painelDeNovos.repaint();
-            this.pack();
+        } else {
+            JOptionPane.showMessageDialog(null, "Pessoa não existe");
         }
-        }
-    }//GEN-LAST:event_jComboCategoriaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.ScroolNomePessoa.removeAll();
-        ArrayList<Conteudo> Ator = this.netflixBancoDeDadosAtual.retornoPessoa(txtNomePessoa.getText());
-        if(Ator.size() == 0){
-            for (int i = 0; i < Ator.size(); i++) {
-            //Vai retornar o filme ou a serie que o ator trabalha
-            Conteudo atual = Ator.get(i);
-            JButton botao = new JButton();
-            botao.setPreferredSize(new Dimension(150, 115));
-                botao.addActionListener(new java.awt.event.ActionListener() {
-                    public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        botaoDeConteudoActionPerformed(evt, atual);
-                    }
-                });
-            botao.setIcon(atual.getIcone());
-            botao.setIcon(this.redimensionar(botao, 150, 115));
-            this.painelDePesquisarNomes.add(botao);
-        }
-        
         this.painelDePesquisarNomes.revalidate();
         this.painelDePesquisarNomes.repaint();
         this.pack();
-        }else{
-            JOptionPane.showMessageDialog(null, "Pessoa não existe");
-        }
-        
-        
-        
-       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private ImageIcon redimensionar(JButton botao, int xLargura, int yAltura) {

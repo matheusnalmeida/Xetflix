@@ -37,7 +37,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         //this.telaDoAdministrador = telaAnterior;
         this.listModel = new DefaultListModel();
         initComponents();
-//        this.preencheImagem();
+       this.preencheImagem();
     }
 
     public CadastrarConteudo(JFrame telaAnterior, Netflix netflixBancoDeDados) {
@@ -45,6 +45,7 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         this.telaDoAdministrador = telaAnterior;
         this.listModel = new DefaultListModel();
         initComponents();
+        this.preencheImagem();
     }
 
     public void resetarCampos() {
@@ -59,11 +60,11 @@ public class CadastrarConteudo extends javax.swing.JFrame {
         this.temporadasConteudo.setEnabled(false);
     }
     
-//    public void preencheImagem(){
-//        ImageIcon icon = new ImageIcon("..Netflix\\src\\images\\no_image.png");
-//        this.labelImagem.setIcon(icon);
-//        this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
-//    }
+    public void preencheImagem(){
+        ImageIcon icon = new ImageIcon("..\\Netflix\\src\\images\\no-image.jpg");
+        this.labelImagem.setIcon(icon);
+        this.labelImagem.setIcon(this.redimensionar(this.labelImagem, this.labelImagem.getWidth(), this.labelImagem.getHeight()));
+    }
     
     public void preencheCategorias() {
         String[] categorias = this.netflixBancoDeDados.getCategorias();
@@ -225,8 +226,6 @@ public class CadastrarConteudo extends javax.swing.JFrame {
                 buscarImagemActionPerformed(evt);
             }
         });
-
-        labelImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/no-image.jpg"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
